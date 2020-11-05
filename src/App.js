@@ -1,72 +1,45 @@
-import React from 'react';
-import './App.css';
+import React from "react";
+import "./App.css";
 
-import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import { BrowserRouter, Switch, Route } from "react-router-dom";
 
-import AUTH_SERVICE from './services/AuthService';
-import AUTHOR_SERVICE from './services/AuthorService';
-<<<<<<< HEAD
-=======
-import BOOK_SERVICE from './services/BookService';
->>>>>>> 562bcb92e389ac3d49bfde19d9cfe558d22085ab
+import AUTH_SERVICE from "./services/AuthService";
+import AUTHOR_SERVICE from "./services/AuthorService";
+import BOOK_SERVICE from "./services/BookService";
 
-import Signup from './components/Authentication/Signup';
-import Login from './components/Authentication/Login';
+import Signup from "./components/Authentication/Signup";
+import Login from "./components/Authentication/Login";
 
-<<<<<<< HEAD
-=======
-import Home from './components/Home';
->>>>>>> 562bcb92e389ac3d49bfde19d9cfe558d22085ab
-import NavBar from './components/NavBar';
-import ProtectedRoute from './components/ProtectedRoute';
-import Profile from './components/Profile';
-import CreateAuthor from './components/Author/CreateAuthor';
-<<<<<<< HEAD
-// import ListAuthors from './components/Author/ListAuthors';
-
-import Home from './components/Home';
-=======
-import CreateBook from './components/Book/CreateBook';
-import BookDetails from './components/Book/BookDetails';
-import UpdateBook from './components/Book/UpdateBook';
->>>>>>> 562bcb92e389ac3d49bfde19d9cfe558d22085ab
+import Home from "./components/Home";
+import NavBar from "./components/NavBar";
+import ProtectedRoute from "./components/ProtectedRoute";
+import Profile from "./components/Profile";
+import CreateAuthor from "./components/Author/CreateAuthor";
+import CreateBook from "./components/Book/CreateBook";
+import BookDetails from "./components/Book/BookDetails";
+import UpdateBook from "./components/Book/UpdateBook";
 
 export default class App extends React.Component {
   state = {
     currentUser: null,
-<<<<<<< HEAD
-    authors: []
-  };
-
-  componentDidMount = () => {
-    AUTHOR_SERVICE.getAuthors()
-      .then(responseFromServer => {
-        const { authors } = responseFromServer.data;
-        this.setState({ authors });
-
-        return AUTH_SERVICE.getAuthenticatedUser();
-      })
-      .then(responseFromServer => {
-        const { user } = responseFromServer.data;
-
-        this.updateUser(user);
-      })
-      .catch(err => console.log(err));
-=======
     authors: [],
-    books: []
+    books: [],
   };
 
   componentDidMount = () => {
-    Promise.all([AUTHOR_SERVICE.getAuthors(), BOOK_SERVICE.getBooks(), AUTH_SERVICE.getAuthenticatedUser()])
-      .then(responseFromServer => {
+    Promise.all([
+      AUTHOR_SERVICE.getAuthors(),
+      BOOK_SERVICE.getBooks(),
+      AUTH_SERVICE.getAuthenticatedUser(),
+    ])
+      .then((responseFromServer) => {
         const { authors } = responseFromServer[0].data;
         const { books } = responseFromServer[1].data;
         const { user } = responseFromServer[2].data;
 
         this.setState({ authors, books, currentUser: user });
       })
-      .catch(err => console.log(err));
+      .catch((err) => console.log(err));
 
     // AUTHOR_SERVICE.getAuthors()
     //   .then(responseFromServer => {
@@ -81,26 +54,23 @@ export default class App extends React.Component {
     //     this.updateUser(user);
     //   })
     //   .catch(err => console.log(err));
->>>>>>> 562bcb92e389ac3d49bfde19d9cfe558d22085ab
   };
 
-  updateUser = user => {
+  updateUser = (user) => {
     this.setState({ currentUser: user });
   };
 
-  updateAuthors = author => {
+  updateAuthors = (author) => {
     const updatedAuthors = [...this.state.authors, author];
     this.setState({ authors: updatedAuthors });
   };
 
-<<<<<<< HEAD
-=======
-  updateBooks = book => {
+  updateBooks = (book) => {
     const updatedBooks = [...this.state.books, book];
     this.setState({ books: updatedBooks });
   };
 
-  updateBooksAfterDelete = id => {
+  updateBooksAfterDelete = (id) => {
     // BOOK_SERVICE.getBooks()
     //   .then(responseFromServer => {
     //     const { books } = responseFromServer.data;
@@ -111,66 +81,88 @@ export default class App extends React.Component {
     const updatedBooks = [...this.state.books];
 
     updatedBooks.splice(
-      updatedBooks.findIndex(book => book._id === id),
+      updatedBooks.findIndex((book) => book._id === id),
       1
     );
 
     this.setState({ books: updatedBooks });
   };
 
->>>>>>> 562bcb92e389ac3d49bfde19d9cfe558d22085ab
   render() {
-    console.log('user in client: ', this.state.currentUser);
+    console.log("user in client: ", this.state.currentUser);
     return (
-      <div className='App'>
+      <div className="App">
         <BrowserRouter>
           <nav>
-            <NavBar currentUser={this.state.currentUser} onUserChange={this.updateUser} />
+            <NavBar
+              currentUser={this.state.currentUser}
+              onUserChange={this.updateUser}
+            />
           </nav>
           <Switch>
-            {/* <Route path='/somePage' component={someComponent} /> */}
-<<<<<<< HEAD
-            <Route exact path='/' render={props => <Home authors={this.state.authors} />} />
-=======
-            <Route exact path='/' render={props => <Home authors={this.state.authors} books={this.state.books} />} />
->>>>>>> 562bcb92e389ac3d49bfde19d9cfe558d22085ab
-            <Route path='/signup-page' render={props => <Signup {...props} onUserChange={this.updateUser} />} />
-            <Route path='/login-page' render={props => <Login {...props} onUserChange={this.updateUser} />} />
-
-            <ProtectedRoute
-              path='/profile'
-              authorized={this.state.currentUser}
-              redirect={'/signup-page'}
-              render={props => <Profile {...props} currentUser={this.state.currentUser} />}
+            <Route
+              exact
+              path="/"
+              render={(props) => (
+                <Home authors={this.state.authors} books={this.state.books} />
+              )}
+            />
+            <Route
+              path="/signup-page"
+              render={(props) => (
+                <Signup {...props} onUserChange={this.updateUser} />
+              )}
+            />
+            <Route
+              path="/login-page"
+              render={(props) => (
+                <Login {...props} onUserChange={this.updateUser} />
+              )}
             />
 
             <ProtectedRoute
-              path='/authors/create'
+              path="/profile"
               authorized={this.state.currentUser}
-              redirect={'/login-page'}
-              render={props => <CreateAuthor {...props} onAuthorsChange={this.updateAuthors} />}
-            />
-<<<<<<< HEAD
-          </Switch>
-=======
-
-            <ProtectedRoute
-              path='/books/create'
-              authorized={this.state.currentUser}
-              redirect={'/login-page'}
-              render={props => <CreateBook {...props} authors={this.state.authors} onBooksChange={this.updateBooks} />}
+              redirect={"/signup-page"}
+              render={(props) => (
+                <Profile {...props} currentUser={this.state.currentUser} />
+              )}
             />
 
             <ProtectedRoute
-              path='/books/:id/edit'
+              path="/authors/create"
               authorized={this.state.currentUser}
-              redirect={'/login-page'}
-              render={props => <UpdateBook {...props} authors={this.state.authors} />}
+              redirect={"/login-page"}
+              render={(props) => (
+                <CreateAuthor {...props} onAuthorsChange={this.updateAuthors} />
+              )}
+            />
+
+            <ProtectedRoute
+              path="/books/create"
+              authorized={this.state.currentUser}
+              redirect={"/login-page"}
+              render={(props) => (
+                <CreateBook
+                  {...props}
+                  authors={this.state.authors}
+                  onBooksChange={this.updateBooks}
+                />
+              )}
+            />
+
+            <ProtectedRoute
+              path="/books/:id/edit"
+              authorized={this.state.currentUser}
+              redirect={"/login-page"}
+              render={(props) => (
+                <UpdateBook {...props} authors={this.state.authors} />
+              )}
             />
 
             <Route
-              path='/books/:id'
-              render={props => (
+              path="/books/:id"
+              render={(props) => (
                 <BookDetails
                   {...props}
                   currentUser={this.state.currentUser}
@@ -180,8 +172,9 @@ export default class App extends React.Component {
             />
           </Switch>
 
-          <footer style={{ clear: 'both' }}>Made with ❤️ at Ironhack - PTWD 06/2020</footer>
->>>>>>> 562bcb92e389ac3d49bfde19d9cfe558d22085ab
+          <footer style={{ clear: "both" }}>
+            Made with ❤️ at Ironhack - PTWD 06/2020
+          </footer>
         </BrowserRouter>
       </div>
     );
