@@ -1,15 +1,15 @@
-import React from 'react';
+import React from "react";
 
-import AUTH_SERVICE from '../../../services/AuthService';
+import AUTH_SERVICE from "../../../services/AuthService";
 
 export default class Login extends React.Component {
   state = {
-    email: '',
-    password: '',
-    message: null
+    email: "",
+    password: "",
+    message: null,
   };
 
-  handleInputChange = event => {
+  handleInputChange = (event) => {
     const { name, value } = event.target;
     this.setState({ [name]: value });
   };
@@ -21,22 +21,22 @@ export default class Login extends React.Component {
   //   });
   // };
 
-  handleFormSubmission = event => {
+  handleFormSubmission = (event) => {
     event.preventDefault();
 
     const { email, password } = this.state;
 
     AUTH_SERVICE.login({ email, password })
-      .then(responseFromServer => {
+      .then((responseFromServer) => {
         const { user } = responseFromServer.data;
 
         // Lift the user object to the App.js
         this.props.onUserChange(user);
 
         // Redirect user to home page after successful sign up
-        this.props.history.push('/');
+        this.props.history.push("/");
       })
-      .catch(err => {
+      .catch((err) => {
         if (err.response && err.response.data) {
           return this.setState({ message: err.response.data.message });
         }
@@ -53,20 +53,19 @@ export default class Login extends React.Component {
             <label>
               Email:
               <input
-                name='email'
-                type='email'
-                placeholder='ana@ironhack.com'
+                name="email"
+                type="email"
+                placeholder="ana@ironhack.com"
                 value={this.state.email}
                 onChange={this.handleInputChange}
               />
             </label>
-
             <label>
               Password:
               <input
-                name='password'
-                type='password'
-                placeholder='**********'
+                name="password"
+                type="password"
+                placeholder="**********"
                 value={this.state.password}
                 onChange={this.handleInputChange}
               />

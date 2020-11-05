@@ -1,6 +1,6 @@
-import React from 'react';
+import React from "react";
 
-const Profile = props => {
+const Profile = (props) => {
   const { username, email } = props.currentUser;
   return (
     <>

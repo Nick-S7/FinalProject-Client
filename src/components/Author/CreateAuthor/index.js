@@ -17,6 +17,8 @@ export default class CreateAuthor extends React.Component {
     this.setState({ [name]: value });
   };
 
+<<<<<<< HEAD
+=======
   // ES6 way - the same as above:
   // handleInputChange = ({ target: { name, value } }) => {
   //   this.setState({
@@ -24,6 +26,7 @@ export default class CreateAuthor extends React.Component {
   //   });
   // };
 
+>>>>>>> 562bcb92e389ac3d49bfde19d9cfe558d22085ab
   handleFormSubmission = event => {
     event.preventDefault();
 
@@ -31,6 +34,10 @@ export default class CreateAuthor extends React.Component {
 
     AUTHOR_SERVICE.createAuthor({ firstName, lastName, nationality, birthday, pictureUrl })
       .then(responseFromServer => {
+<<<<<<< HEAD
+        // console.log('res from server in author:', responseFromServer);
+=======
+>>>>>>> 562bcb92e389ac3d49bfde19d9cfe558d22085ab
         const { author } = responseFromServer.data;
 
         this.props.onAuthorsChange(author);
@@ -48,8 +55,11 @@ export default class CreateAuthor extends React.Component {
     return (
       <>
         <section>
+<<<<<<< HEAD
+=======
           <h2> Create new Author </h2>
 
+>>>>>>> 562bcb92e389ac3d49bfde19d9cfe558d22085ab
           <form onSubmit={this.handleFormSubmission}>
             <label>
               First Name
@@ -83,7 +93,10 @@ export default class CreateAuthor extends React.Component {
                 onChange={this.handleInputChange}
               />
             </label>
+<<<<<<< HEAD
+=======
 
+>>>>>>> 562bcb92e389ac3d49bfde19d9cfe558d22085ab
             <label>
               Birthday
               <input
@@ -94,7 +107,10 @@ export default class CreateAuthor extends React.Component {
                 onChange={this.handleInputChange}
               />
             </label>
+<<<<<<< HEAD
+=======
 
+>>>>>>> 562bcb92e389ac3d49bfde19d9cfe558d22085ab
             <label>
               Picture Url
               <input
@@ -105,10 +121,15 @@ export default class CreateAuthor extends React.Component {
                 onChange={this.handleInputChange}
               />
             </label>
+<<<<<<< HEAD
+            <button> Create Author </button>
+          </form>
+=======
 
             <button> Create Author </button>
           </form>
 
+>>>>>>> 562bcb92e389ac3d49bfde19d9cfe558d22085ab
           {message && <div>{message}</div>}
         </section>
       </>
