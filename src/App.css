@@ -2,37 +2,110 @@
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.search {
+  position: absolute;
+  top: 11vw;
+  left: 32vw;
+  color: #fff;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.search-img img{
+  width: 100vw;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.search-img{
+  width: 100vw;
+
+}
+
+.search-page {
+  width: 100vw;
+  height: 80vw;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  background: radial-gradient(#434343,#000000) fixed;
+
 }
 
-.App-link {
-  color: #61dafb;
+.search-results{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  width: 75vw;
+  background-color: rgba(255, 255, 255, 0.514);
+  position: absolute;
+  top: 8vw;
+  z-index: 1;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.search-results img {
+  width: 10vw;
+}
+
+input[type='text'],
+.search-field {
+  width: 700px;
+  text-align: center;
+  border: none;
+  color: #ffffff;
+  border-bottom: 1px solid white;
+  background-color: rgba(255, 255, 255, 0.479);
+  font-size: 18px;
+}
+
+.single-attraction{
+  width: fit-content;
+  display: flex;
+  flex-direction: column;
+  height: fit-content;
+  margin: 1em;
+  border: 1px solid rgb(146, 93, 0);
+  color: rgb(0, 0, 0);
+  align-items: center;
+  font-size: .7em;
+}
+
+.single-attraction:hover {
+  border: 2px solid rgb(0, 0, 0);
+  color: rgb(0, 0, 0);
+}
+
+nav{
+  display: flex;
+  justify-content: space-evenly;
+
+}
+
+.nav-search-results{
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  z-index: 1;
+  position: absolute;
+
+
+}
+
+.single-nav-result{
+  font-size: .5em;
+  width: 20vw;
+  display: flex;
+
+}
+
+.single-nav-result img{
+ width: 5vw;
+}
+
+input[type='text'],
+.nav-search-field{
+  width: 20vw;
+  text-align: center;
+  border: none;
+  color: black;
+  border-bottom: 1px solid white;
+  background-color: rgba(255, 255, 255, 0.479);
+  font-size: 18px;
 }

@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom';
 
 import AUTH_SERVICE from '../../services/AuthService';
 
+import NavSearch from '../Search/NavSearch'
+
 const NavBar = props => {
   const logoutAndLiftUserState = () => {
     AUTH_SERVICE.logout()
@@ -16,6 +18,7 @@ const NavBar = props => {
       <Link to='/'>
         <strong>BookClub</strong>
       </Link>
+      <NavSearch/>
 
       {(props.currentUser && (
         <>
@@ -23,10 +26,12 @@ const NavBar = props => {
           <Link to='/profile'> Profile </Link>
           <Link to='/authors/create'> Create Author </Link>
           <Link to='/books/create'> Create Book </Link>
+          
           <button onClick={logoutAndLiftUserState}> Logout </button>
         </>
       )) || (
         <>
+         
           <Link to='/signup-page'>Signup</Link>
           <Link to='/login-page'>Login</Link>
         </>

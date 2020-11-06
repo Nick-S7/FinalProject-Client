@@ -18,6 +18,7 @@ import CreateAuthor from './components/Author/CreateAuthor';
 import CreateBook from './components/Book/CreateBook';
 import BookDetails from './components/Book/BookDetails';
 import UpdateBook from './components/Book/UpdateBook';
+import SearchBar from './components/Search/SearchBar'
 
 export default class App extends React.Component {
   state = {
@@ -97,6 +98,8 @@ export default class App extends React.Component {
             <Route exact path='/' render={props => <Home authors={this.state.authors} books={this.state.books} />} />
             <Route path='/signup-page' render={props => <Signup {...props} onUserChange={this.updateUser} />} />
             <Route path='/login-page' render={props => <Login {...props} onUserChange={this.updateUser} />} />
+            <Route path='/Search' render={props => <SearchBar/> }/>
+
 
             <ProtectedRoute
               path='/profile'
@@ -136,6 +139,15 @@ export default class App extends React.Component {
                 />
               )}
             />
+
+              <Route
+              path='/Search'
+              render={props => (
+                <SearchBar/>
+              )}
+            />
+
+
           </Switch>
 
           <footer style={{ clear: 'both' }}>Made with ❤️ at Ironhack - PTWD 06/2020</footer>
