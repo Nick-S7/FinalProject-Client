@@ -14,27 +14,32 @@ const NavBar = props => {
   };
   return (
     <nav>
+
+    <NavSearch/>
+
+    <div className="logo">
       <Link to="/">
         <strong>BookClub</strong>
       </Link>
-      <NavSearch/>
-
+    </div>
+    <div>
       {(props.currentUser && (
-        <>
-          <span>{props.currentUser.username}</span>
-          <Link to='/profile'> Profile </Link>
-          <Link to='/authors/create'> Create Author </Link>
-          <Link to='/books/create'> Create Book </Link>
+        <div className="li-nav">
+          <span></span>
+          <Link to='/profile'>{props.currentUser.username} </Link> |
+          <Link to='/authors/create'> Create Author </Link> |
+          <Link to='/books/create'> Create Book </Link> |
           
-          <button onClick={logoutAndLiftUserState}> Logout </button>
-        </>
+          <button className="lo-nav-btn" onClick={logoutAndLiftUserState}> Logout </button>
+        </div>
       )) || (
-        <>
+        <div className="lo-nav">
          
-          <Link to='/signup-page'>Signup</Link>
+          <Link to='/signup-page'>Signup</Link> |
           <Link to='/login-page'>Login</Link>
-        </>
+        </div>
       )}
+      </div>
     </nav>
   );
 };

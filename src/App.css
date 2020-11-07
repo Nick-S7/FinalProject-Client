@@ -1,5 +1,7 @@
 .App {
   text-align: center;
+  height: 99vw;
+  background: linear-gradient(#93a5cf,#2b1f47) fixed;
 }
 
 .search {
@@ -24,7 +26,6 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  background: radial-gradient(#434343,#000000) fixed;
 
 }
 
@@ -72,11 +73,75 @@ input[type='text'],
   color: rgb(0, 0, 0);
 }
 
+
+.logo{
+  width: 20vw;
+}
+
 nav{
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
+  width: 98vw;
 
 }
+.lo-nav{
+  width: 10vw;
+  display: flex;
+  justify-content: space-around;
+  color: #fff;
+}
+
+.lo-nav a {
+  text-decoration: none;
+  font-size: 1em;
+  font-weight: 500;
+  color: #fff;
+  letter-spacing: 1px;
+}
+ .lo-nav a:hover{
+   color: #F9BB80;
+   letter-spacing: 1.5px;
+   transition: color .5s;
+ }
+
+
+ .li-nav{
+   width: 30vw;
+   display: flex;
+  justify-content: space-evenly;
+  color: #fff;
+
+ }
+
+ .li-nav a{
+  display: flex;
+  text-decoration: none;
+  font-size: 1em;
+  font-weight: 500;
+  color: #fff;
+  letter-spacing: 1px;
+ }
+
+ .li-nav a:hover {
+  color: #F9BB80;
+  letter-spacing: 1.5px;
+  transition: color .5s;
+ }
+
+ .lo-nav-btn{
+   all: unset;
+   font-size: 1em;
+   font-weight: 500;
+   color: #fff;
+   letter-spacing: 1px;
+ }
+
+ .lo-nav-btn:hover{
+  color: #F9BB80;
+  letter-spacing: 1.5px;
+  transition: color .5s;
+ }
+
 
 .nav-search-results{
   display: flex;
@@ -84,15 +149,21 @@ nav{
   flex-wrap: wrap;
   z-index: 1;
   position: absolute;
-
-
+  background-color: rgba(255, 255, 255, 0.26);
 }
 
 .single-nav-result{
   font-size: .5em;
-  width: 20vw;
+  width: 15vw;
   display: flex;
+  border-bottom: 1px solid black;
+  margin-top: .5em;
+  padding-bottom: .5em;
 
+}
+
+.single-nav-result:hover  {
+  background-color: rgba(255, 255, 255, 0.384);
 }
 
 .single-nav-result img{
@@ -101,7 +172,7 @@ nav{
 
 input[type='text'],
 .nav-search-field{
-  width: 20vw;
+  width: 15vw;
   text-align: center;
   border: none;
   color: black;
