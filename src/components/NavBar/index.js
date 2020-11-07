@@ -1,8 +1,8 @@
-import React from 'react';
+import React from "react";
 
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 
-import AUTH_SERVICE from '../../services/AuthService';
+import AUTH_SERVICE from "../../services/AuthService";
 
 import NavSearch from '../Search/NavSearch'
 
@@ -10,12 +10,11 @@ const NavBar = props => {
   const logoutAndLiftUserState = () => {
     AUTH_SERVICE.logout()
       .then(() => props.onUserChange(null))
-      .catch(err => console.log(err));
+      .catch((err) => console.log(err));
   };
-
   return (
     <nav>
-      <Link to='/'>
+      <Link to="/">
         <strong>BookClub</strong>
       </Link>
       <NavSearch/>

@@ -83,7 +83,6 @@ export default class CreateAuthor extends React.Component {
                 onChange={this.handleInputChange}
               />
             </label>
-
             <label>
               Birthday
               <input
@@ -94,7 +93,6 @@ export default class CreateAuthor extends React.Component {
                 onChange={this.handleInputChange}
               />
             </label>
-
             <label>
               Picture Url
               <input
