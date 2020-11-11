@@ -1,35 +1,35 @@
-import React from 'react';
+import React from "react";
 
-import BOOK_SERVICE from '../../../services/BookService';
+import BOOK_SERVICE from "../../../services/CommentService";
 
 export default class CreateBook extends React.Component {
   state = {
-    title: '',
-    description: '',
-    author: '',
-    rating: '',
-    message: null
+    title: "",
+    description: "",
+    author: "",
+    rating: "",
+    message: null,
     // authors: [] // in case you want to have a call to server in componentDidMount, you need authors array in the state
   };
 
-  handleInputChange = event => {
+  handleInputChange = (event) => {
     const { name, value } = event.target;
     this.setState({ [name]: value });
   };
 
-  handleFormSubmission = event => {
+  handleFormSubmission = (event) => {
     event.preventDefault();
 
     const { title, description, author, rating } = this.state;
 
     BOOK_SERVICE.createBook({ title, description, author, rating })
-      .then(responseFromServer => {
+      .then((responseFromServer) => {
         const { book } = responseFromServer.data;
 
         this.props.onBooksChange(book);
-        this.props.history.push('/');
+        this.props.history.push("/");
       })
-      .catch(err => {
+      .catch((err) => {
         if (err.response && err.response.data) {
           return this.setState({ message: err.response.data.message });
         }
@@ -47,7 +47,7 @@ export default class CreateBook extends React.Component {
   //   };
 
   render() {
-    console.log('authors: ', this.props.authors);
+    console.log("authors: ", this.props.authors);
     const { title, description, author, rating, message } = this.state;
 
     return (
@@ -58,9 +58,9 @@ export default class CreateBook extends React.Component {
           <label>
             Title
             <input
-              name='title'
-              type='text'
-              placeholder='Pride and Prejudice'
+              name="title"
+              type="text"
+              placeholder="Pride and Prejudice"
               value={title}
               onChange={this.handleInputChange}
             />
@@ -69,9 +69,9 @@ export default class CreateBook extends React.Component {
           <label>
             Description
             <textarea
-              name='description'
-              type='text'
-              placeholder='Put some description here...'
+              name="description"
+              type="text"
+              placeholder="Put some description here..."
               value={description}
               onChange={this.handleInputChange}
             />
@@ -79,12 +79,16 @@ export default class CreateBook extends React.Component {
 
           <label>
             Author
-            <select value={this.state.author} name='author' onChange={this.handleInputChange}>
+            <select
+              value={this.state.author}
+              name="author"
+              onChange={this.handleInputChange}
+            >
               <option>choose author</option>
 
               {/* {this.state.authors.map(author => ()} -> in case you would go for additional call in componentDidMount*/}
 
-              {this.props.authors.map(author => (
+              {this.props.authors.map((author) => (
                 <option value={author._id} key={author._id}>
                   {author.firstName} {author.lastName}
                 </option>
@@ -95,12 +99,12 @@ export default class CreateBook extends React.Component {
           <label>
             Rating
             <input
-              name='rating'
-              type='number'
-              placeholder='5'
+              name="rating"
+              type="number"
+              placeholder="5"
               value={rating}
-              min='1'
-              max='10'
+              min="1"
+              max="10"
               onChange={this.handleInputChange}
             />
           </label>

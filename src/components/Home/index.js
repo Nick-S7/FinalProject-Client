@@ -1,6 +1,6 @@
 import React from "react";
-import ListAuthors from "../Author/ListAuthors";
-import ListBooks from "../Book/ListBooks";
+import ListAuthors from "../Event/ListEvents";
+import ListBooks from "../Comment/ListBooks";
 
 const Home = (props) => {
   return (
@@ -11,14 +11,9 @@ const Home = (props) => {
         Welcome to Server-Client demo app! This is your favorite app forever! 🚀{" "}
       </p>
 
-      <div style={{ width: "50%", float: "left" }}>
-        <h3>Books</h3>
-        <ListBooks books={props.books} />
-      </div>
-
       <div style={{ width: "50%", float: "right" }}>
-        <h3>Authors</h3>
-        <ListAuthors authors={props.authors} />
+        <h3>Events</h3>
+        <ListEvents events={props.events} />
       </div>
     </>
   );
