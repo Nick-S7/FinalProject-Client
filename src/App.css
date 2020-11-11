@@ -1,11 +1,19 @@
+@font-face {
+  font-family: cFont;
+  src: url(fonts/Aceh-Light.ttf);
+}
+
+
 .App {
   text-align: center;
-  height: 99vw;
+  background: linear-gradient(#93a5cf,#2b1f47) fixed;
+  font-family: cFont;
+}
+html {
   background: linear-gradient(#93a5cf,#2b1f47) fixed;
 }
 
 .search {
-  position: absolute;
   top: 11vw;
   left: 32vw;
   color: #fff;
@@ -21,8 +29,6 @@
 }
 
 .search-page {
-  width: 100vw;
-  height: 80vw;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -31,18 +37,17 @@
 
 .search-results{
   display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: space-evenly;
+  flex-direction: column;
   width: 75vw;
-  background-color: rgba(255, 255, 255, 0.514);
-  position: absolute;
-  top: 8vw;
+  height: min-content;
+  background-color: rgba(255, 255, 255, 0.301);
   z-index: 1;
-}
+  overflow: auto;
+  }
 
 .search-results img {
   width: 10vw;
+  align-self: flex-start;
 }
 
 input[type='text'],
@@ -57,22 +62,33 @@ input[type='text'],
 }
 
 .single-attraction{
-  width: fit-content;
   display: flex;
-  flex-direction: column;
   height: fit-content;
-  margin: 1em;
-  border: 1px solid rgb(146, 93, 0);
-  color: rgb(0, 0, 0);
+  margin: .5em;
+  border: 1px solid  #F9BB80;
+  color: white;
   align-items: center;
   font-size: .7em;
 }
 
+
 .single-attraction:hover {
-  border: 2px solid rgb(0, 0, 0);
+  border: 1px solid white;
+  background-color: #F9BB80;
   color: rgb(0, 0, 0);
+  transition: all 1s;
 }
 
+.single-attraction-text {
+  display: flex;
+  flex-direction: column;
+  font-size: 1.4em;
+  width: 55vw;
+}
+
+.single-attraction-text h2, h4{
+  margin: 0;
+}
 
 .logo{
   width: 20vw;
@@ -93,7 +109,7 @@ nav{
 
 .lo-nav a {
   text-decoration: none;
-  font-size: 1em;
+  font-size: 1.2em;
   font-weight: 500;
   color: #fff;
   letter-spacing: 1px;
@@ -116,7 +132,7 @@ nav{
  .li-nav a{
   display: flex;
   text-decoration: none;
-  font-size: 1em;
+  font-size: 1.2em;
   font-weight: 500;
   color: #fff;
   letter-spacing: 1px;
@@ -130,7 +146,7 @@ nav{
 
  .lo-nav-btn{
    all: unset;
-   font-size: 1em;
+   font-size: 1.2em;
    font-weight: 500;
    color: #fff;
    letter-spacing: 1px;
@@ -147,13 +163,13 @@ nav{
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
-  z-index: 1;
+  z-index: 2;
   position: absolute;
   background-color: rgba(255, 255, 255, 0.26);
 }
 
 .single-nav-result{
-  font-size: .5em;
+  font-size: .7em;
   width: 15vw;
   display: flex;
   border-bottom: 1px solid black;
@@ -179,4 +195,19 @@ input[type='text'],
   border-bottom: 1px solid white;
   background-color: rgba(255, 255, 255, 0.479);
   font-size: 18px;
+}
+
+.home-head{
+  font-family: cFont;
+  font-size: 2.8em;
+  color: #fff;
+  background: radial-gradient(#ffffff00,#ffffff6e) fixed;
+}
+
+.home-head h2{
+  font-size: 3em;
+  font-weight: 100;
+  margin-top: .3em;
+  margin-bottom: 0;
+
 }

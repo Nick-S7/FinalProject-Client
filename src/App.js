@@ -20,6 +20,7 @@ import BookDetails from './components/Book/BookDetails';
 import UpdateBook from './components/Book/UpdateBook';
 import SearchBar from './components/Search/SearchBar'
 
+
 export default class App extends React.Component {
   state = {
     currentUser: null,
@@ -88,6 +89,8 @@ export default class App extends React.Component {
 
     this.setState({ books: updatedBooks });
   };
+
+  
 
   render() {
     console.log("user in client: ", this.state.currentUser);
@@ -159,12 +162,7 @@ export default class App extends React.Component {
               )}
             />
 
-              <Route
-              path='/Search'
-              render={props => (
-                <SearchBar/>
-              )}
-            />
+
 
 
           </Switch>
