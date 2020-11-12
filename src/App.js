@@ -166,10 +166,6 @@ export default class App extends React.Component {
 
 
           </Switch>
-
-          <footer style={{ clear: "both" }}>
-            Made with ❤️ at Ironhack - PTWD 06/2020
-          </footer>
         </BrowserRouter>
       </div>
     );

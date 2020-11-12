@@ -31,6 +31,12 @@ class Search extends Component {
         this.getInfo();
       }
     } else if (!query) {
+    } else if (query.length === 0){
+        this.setState({
+            query: "",
+            results: []
+        });
+        return "";
     }
   };
 
