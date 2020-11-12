@@ -26,11 +26,11 @@ export default class CreateEvent extends React.Component {
   //   });
   // };
 
-  handleImageChange = (event) => {
-    const { file } = event.target;
+  // handleImageChange = (event) => {
+  //   const { file } = event.target;
 
-    uploadData.append("image", file);
-  };
+  //   uploadData.append("image", file);
+  // };
 
   handleFormSubmission = (event) => {
     event.preventDefault();

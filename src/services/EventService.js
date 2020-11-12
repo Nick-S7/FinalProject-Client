@@ -9,7 +9,7 @@ const service = axios.create({
 
 const EVENT_SERVICE = {
   createEvent(eventData) {
-    return service.post("/api/events", eventData);
+    return service.post("/api/events/create", eventData);
   },
   getEvents() {
     return service.get("/api/events");
@@ -19,6 +19,9 @@ const EVENT_SERVICE = {
   },
   deleteEvent(eventData) {
     return service.post("/api/events/:eventId/delete", eventData);
+  },
+  getEventDetails(id) {
+    return service.get(`/api/events/${id}`);
   },
 };
 

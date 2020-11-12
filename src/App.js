@@ -15,6 +15,7 @@ import NavBar from "./components/NavBar";
 import ProtectedRoute from "./components/ProtectedRoute";
 import Profile from "./components/Profile";
 import CreateEvent from "./components/Event/CreateEvent";
+import EventDetails from "./components/Event/EventDetails";
 // import CreateComment from "./components/Comment/CreateComment";
 // import BookDetails from "./components/Book/BookDetails";
 // import UpdateBook from "./components/Book/UpdateBook";
@@ -67,12 +68,12 @@ export default class App extends React.Component {
     this.setState({ events: updatedEvents });
   };
 
-  updateComments = (comment) => {
-    const updatedComments = [...this.state.comments, comment];
-    this.setState({ comments: updatedComments });
-  };
+  // updateComments = (comment) => {
+  //   const updatedComments = [...this.state.comments, comment];
+  //   this.setState({ comments: updatedComments });
+  // };
 
-  updateCommentsAfterDelete = (id) => {
+  updateEventsAfterDelete = (id) => {
     // BOOK_SERVICE.getBooks()
     //   .then(responseFromServer => {
     //     const { books } = responseFromServer.data;
@@ -80,14 +81,14 @@ export default class App extends React.Component {
     //   })
     //   .catch(err => console.log(err));
 
-    const updatedComments = [...this.state.comments];
+    const updatedEvents = [...this.state.events];
 
-    updatedComments.splice(
-      updatedComments.findIndex((comment) => comment._id === id),
+    updatedEvents.splice(
+      updatedEvents.findIndex((event) => event._id === id),
       1
     );
 
-    this.setState({ comments: updatedComments });
+    this.setState({ events: updatedEvents });
   };
 
   render() {
@@ -137,7 +138,7 @@ export default class App extends React.Component {
             />
 
             <ProtectedRoute
-              path="/events/create"
+              path="/api/events/create"
               authorized={this.state.currentUser}
               redirect={"/login-page"}
               render={(props) => (
@@ -145,7 +146,7 @@ export default class App extends React.Component {
               )}
             />
 
-            <ProtectedRoute
+            {/* <ProtectedRoute
               path="/comments/create"
               authorized={this.state.currentUser}
               redirect={"/login-page"}
@@ -156,7 +157,7 @@ export default class App extends React.Component {
                   onCommentsChange={this.updateComments}
                 />
               )}
-            />
+            /> */}
 
             {/* <ProtectedRoute
               path="/books/:id/edit"
@@ -167,16 +168,16 @@ export default class App extends React.Component {
               )}
             /> */}
 
-            {/* <Route
-              path="/books/:id"
+            <Route
+              path="/api/events/:id"
               render={(props) => (
-                <BookDetails
+                <EventDetails
                   {...props}
                   currentUser={this.state.currentUser}
-                  onBooksChangeAfterDelete={this.updateBooksAfterDelete}
+                  onEventsChangeAfterDelete={this.updateEventsAfterDelete}
                 />
               )}
-            /> */}
+            />
 
             <Route path="/Search" render={(props) => <SearchBar />} />
           </Switch>
