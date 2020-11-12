@@ -1,21 +1,16 @@
 import React from "react";
-import ListAuthors from "../Event/ListEvents";
-import ListBooks from "../Comment/ListBooks";
+import SearchBar from "../Search/SearchBar";
 
 const Home = (props) => {
   return (
-    <>
-      <h2> This is a home page of BookClub! 📚</h2>
-      <p>
-        {" "}
-        Welcome to Server-Client demo app! This is your favorite app forever! 🚀{" "}
-      </p>
-
-      <div style={{ width: "50%", float: "right" }}>
-        <h3>Events</h3>
-        <ListEvents events={props.events} />
+    <div className="home">
+      <div className="home-head">
+        <h2> Atlas </h2>
+        <p> An Innovative Search Engine for Events and Attractions </p>
       </div>
-    </>
+
+      <SearchBar />
+    </div>
   );
 };
 

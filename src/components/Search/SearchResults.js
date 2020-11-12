@@ -10,14 +10,16 @@ const SearchResults = (props) => {
       props.history.push(`/meals:${r.strMeal}`)
   }} >
         <img src={r.images[0].url} alt="img"/>
+        <div className="single-attraction-text">
         <h2>{r.name}</h2>  
-
+        <h4>{r.classifications[0].genre.name}</h4>
+        </div>
     </div>
 
 
   ))
 
-  return <div className="search-results">{options}</div>
+  return <>{options}</>
 }
 
 export default SearchResults
