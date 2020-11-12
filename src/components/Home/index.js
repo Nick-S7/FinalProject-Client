@@ -5,14 +5,10 @@ import SearchBar from "../Search/SearchBar"
 const Home = (props) => {
   return (
     <div className="home">
-    <div className="home-head">      
-    <h2> Atlas </h2>
-      <p>
-        {" "}
-        An Innovative Search Engine for Events and Attractions{" "}
-      </p>
-    </div>
-
+      <div className="home-head">
+        <h2> Atlas </h2>
+        <p> An Innovative Search Engine for Events and Attractions </p>
+      </div>
 
       
       <SearchBar/>

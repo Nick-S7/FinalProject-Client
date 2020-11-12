@@ -4,22 +4,23 @@ import "./App.css";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 
 import AUTH_SERVICE from "./services/AuthService";
-import AUTHOR_SERVICE from "./services/AuthorService";
-import BOOK_SERVICE from "./services/BookService";
+import EVENT_SERVICE from "./services/EventService";
+import COMMENT_SERVICE from "./services/CommentService";
 
 import Signup from "./components/Authentication/Signup";
 import Login from "./components/Authentication/Login";
 
-import Home from './components/Home';
-import NavBar from './components/NavBar';
-import ProtectedRoute from './components/ProtectedRoute';
-import Profile from './components/Profile';
-import CreateAuthor from './components/Author/CreateAuthor';
-import CreateBook from './components/Book/CreateBook';
-import BookDetails from './components/Book/BookDetails';
-import UpdateBook from './components/Book/UpdateBook';
-import SearchBar from './components/Search/SearchBar'
-
+import Home from "./components/Home";
+import NavBar from "./components/NavBar";
+import ProtectedRoute from "./components/ProtectedRoute";
+import Profile from "./components/Profile";
+import CreateEvent from "./components/Event/CreateEvent";
+import EventDetails from "./components/Event/EventDetails";
+// import CreateComment from "./components/Comment/CreateComment";
+// import BookDetails from "./components/Book/BookDetails";
+// import UpdateBook from "./components/Book/UpdateBook";
+import SearchBar from "./components/Search/SearchBar";
+import { createEvent } from "@testing-library/react";
 
 export default class App extends React.Component {
   state = {
@@ -30,16 +31,16 @@ export default class App extends React.Component {
 
   componentDidMount = () => {
     Promise.all([
-      AUTHOR_SERVICE.getAuthors(),
-      BOOK_SERVICE.getBooks(),
+      EVENT_SERVICE.getEvents(),
+      COMMENT_SERVICE.getComments(),
       AUTH_SERVICE.getAuthenticatedUser(),
     ])
       .then((responseFromServer) => {
-        const { authors } = responseFromServer[0].data;
-        const { books } = responseFromServer[1].data;
+        const { events } = responseFromServer[0].data;
+        const { comments } = responseFromServer[1].data;
         const { user } = responseFromServer[2].data;
 
-        this.setState({ authors, books, currentUser: user });
+        this.setState({ events, comments, currentUser: user });
       })
       .catch((err) => console.log(err));
 
@@ -62,17 +63,17 @@ export default class App extends React.Component {
     this.setState({ currentUser: user });
   };
 
-  updateAuthors = (author) => {
-    const updatedAuthors = [...this.state.authors, author];
-    this.setState({ authors: updatedAuthors });
+  updateEvents = (event) => {
+    const updatedEvents = [...this.state.events, event];
+    this.setState({ events: updatedEvents });
   };
 
-  updateBooks = (book) => {
-    const updatedBooks = [...this.state.books, book];
-    this.setState({ books: updatedBooks });
-  };
+  // updateComments = (comment) => {
+  //   const updatedComments = [...this.state.comments, comment];
+  //   this.setState({ comments: updatedComments });
+  // };
 
-  updateBooksAfterDelete = (id) => {
+  updateEventsAfterDelete = (id) => {
     // BOOK_SERVICE.getBooks()
     //   .then(responseFromServer => {
     //     const { books } = responseFromServer.data;
@@ -80,17 +81,15 @@ export default class App extends React.Component {
     //   })
     //   .catch(err => console.log(err));
 
-    const updatedBooks = [...this.state.books];
+    const updatedEvents = [...this.state.events];
 
-    updatedBooks.splice(
-      updatedBooks.findIndex((book) => book._id === id),
+    updatedEvents.splice(
+      updatedEvents.findIndex((event) => event._id === id),
       1
     );
 
-    this.setState({ books: updatedBooks });
+    this.setState({ events: updatedEvents });
   };
-
-  
 
   render() {
     console.log("user in client: ", this.state.currentUser);
@@ -105,11 +104,29 @@ export default class App extends React.Component {
           </nav>
           <Switch>
             {/* <Route path='/somePage' component={someComponent} /> */}
-            <Route exact path='/' render={props => <Home authors={this.state.authors} books={this.state.books} />} />
-            <Route path='/signup-page' render={props => <Signup {...props} onUserChange={this.updateUser} />} />
-            <Route path='/login-page' render={props => <Login {...props} onUserChange={this.updateUser} />} />
-            <Route path='/Search' render={props => <SearchBar/> }/>
-
+            <Route
+              exact
+              path="/"
+              render={(props) => (
+                <Home
+                  events={this.state.events}
+                  comments={this.state.comments}
+                />
+              )}
+            />
+            <Route
+              path="/signup-page"
+              render={(props) => (
+                <Signup {...props} onUserChange={this.updateUser} />
+              )}
+            />
+            <Route
+              path="/login-page"
+              render={(props) => (
+                <Login {...props} onUserChange={this.updateUser} />
+              )}
+            />
+            <Route path="/Search" render={(props) => <SearchBar />} />
 
             <ProtectedRoute
               path="/profile"
@@ -121,50 +138,48 @@ export default class App extends React.Component {
             />
 
             <ProtectedRoute
-              path="/authors/create"
+              path="/api/events/create"
               authorized={this.state.currentUser}
               redirect={"/login-page"}
               render={(props) => (
-                <CreateAuthor {...props} onAuthorsChange={this.updateAuthors} />
+                <createEvent {...props} onEventsChange={this.updateEvents} />
               )}
             />
 
-            <ProtectedRoute
-              path="/books/create"
+            {/* <ProtectedRoute
+              path="/comments/create"
               authorized={this.state.currentUser}
               redirect={"/login-page"}
               render={(props) => (
-                <CreateBook
+                <CreateComment
                   {...props}
-                  authors={this.state.authors}
-                  onBooksChange={this.updateBooks}
+                  events={this.state.events}
+                  onCommentsChange={this.updateComments}
                 />
               )}
-            />
+            /> */}
 
-            <ProtectedRoute
+            {/* <ProtectedRoute
               path="/books/:id/edit"
               authorized={this.state.currentUser}
               redirect={"/login-page"}
               render={(props) => (
                 <UpdateBook {...props} authors={this.state.authors} />
               )}
-            />
+            /> */}
 
             <Route
-              path="/books/:id"
+              path="/api/events/:id"
               render={(props) => (
-                <BookDetails
+                <EventDetails
                   {...props}
                   currentUser={this.state.currentUser}
-                  onBooksChangeAfterDelete={this.updateBooksAfterDelete}
+                  onEventsChangeAfterDelete={this.updateEventsAfterDelete}
                 />
               )}
             />
 
-
-
-
+            <Route path="/Search" render={(props) => <SearchBar />} />
           </Switch>
         </BrowserRouter>
       </div>
