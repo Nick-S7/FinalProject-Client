@@ -8,15 +8,6 @@ class Search extends Component {
     results: [],
   };
   
-  componentWillMount(){
-      document.addEventListener('mousedown', this.handleClick, false);
-
-  }
-
-  componentWillUnmount(){
-      document.removeEventListener('mousedown', this.handleClick, false)
-  }
-
 
   getInfo = () => {
     axios
@@ -58,7 +49,7 @@ class Search extends Component {
             </div>
 
             <>
-            <NavResults ref={node => this.node = node}{...this.props} results={this.state.results} />
+            <NavResults {...this.props} results={this.state.results} />
             </>
       </div>
     );

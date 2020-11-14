@@ -226,7 +226,7 @@ input[type='text'],
   flex-direction: row;
   justify-content: space-evenly;
   margin-top: 1vw;
-
+  align-items: baseline;
 }
 
 .foot-section{
@@ -270,4 +270,17 @@ input[type='text'],
 .foot-section img{
   width: 20vw;
 
+}
+
+.login-page{
+  display: flex;
+  justify-content: center;
+  height: 30vw;
+  align-items: center;
+}
+
+.login-form{
+  display: flex;
+  flex-direction: column;
+  width: 50vw;
 }

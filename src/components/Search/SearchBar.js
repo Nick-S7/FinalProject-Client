@@ -14,10 +14,10 @@ class Search extends Component {
         `https://app.ticketmaster.com/discovery/v2/events.json?keyword=${this.state.query}&countryCode=US&apikey=CRaZgOHhS0iRjYSFURNt0YrDZs6z0nVR`
       )
       .then(( data ) => {
-          console.log(data.data)
         this.setState({
           results: data.data._embedded.events,
         });
+        console.log(this.state.results)
       });
   };
 
@@ -57,7 +57,7 @@ class Search extends Component {
            
 
             <div className="search-results">
-            <SearchResults {...this.props} results={this.state.results} />
+            <SearchResults {...this.props} handleSelectedEvent={this.props.handleSelectedEvent} selectedEvent={this.props.selectedEvent} results={this.state.results} />
             </div>
       </div>
     );

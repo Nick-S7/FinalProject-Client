@@ -27,6 +27,7 @@ export default class App extends React.Component {
     currentUser: null,
     authors: [],
     books: [],
+    selectedEvent: '',
   };
 
   componentDidMount = () => {
@@ -91,6 +92,12 @@ export default class App extends React.Component {
     this.setState({ events: updatedEvents });
   };
 
+  handleSelectedEvent = (event) => {
+    this.setState({selectedEvent : event})
+    console.log(event ,"=====", this.state.selectedEvent)
+  }
+
+
   render() {
     console.log("user in client: ", this.state.currentUser);
     return (
@@ -109,11 +116,15 @@ export default class App extends React.Component {
               path="/"
               render={(props) => (
                 <Home
+                  {...props}
+                  handleSelectedEvent = {this.handleSelectedEvent}
+                  selectedEvent = {this.state.selectedEvent}
                   events={this.state.events}
                   comments={this.state.comments}
                 />
               )}
             />
+
             <Route
               path="/signup-page"
               render={(props) => (
@@ -167,6 +178,16 @@ export default class App extends React.Component {
                 <UpdateBook {...props} authors={this.state.authors} />
               )}
             /> */}
+            <Route
+              path="/events/:id"
+              render={(props) => (
+                <EventDetails
+                  {...props}
+                  currentUser={this.state.currentUser}
+                  onEventsChangeAfterDelete={this.updateEventsAfterDelete}
+                />
+              )}
+            />
 
             <Route
               path="/api/events/:id"

@@ -11,7 +11,7 @@ const Home = (props) => {
       </div>
 
       
-      <SearchBar/>
+      <SearchBar {...props} handleSelectedEvent={props.handleSelectedEvent} selectedEvent={props.selectedEvent} />
 
       
       <footer style={{ clear: "both" }}>
