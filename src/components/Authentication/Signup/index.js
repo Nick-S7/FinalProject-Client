@@ -46,13 +46,14 @@ export default class Signup extends React.Component {
 
   render() {
     return (
-      <>
-        <section>
+      <div className="signup-page">
+        <div className="signup-form">
           <h2> Sign Up </h2>
 
           <form onSubmit={this.handleFormSubmission}>
             <label>
               Username:
+            </label>
               <input
                 name="username"
                 type="text"
@@ -60,35 +61,39 @@ export default class Signup extends React.Component {
                 value={this.state.username}
                 onChange={this.handleInputChange}
               />
-            </label>
-            <label>
+            
+            <label className="">
               Email:
+              </label>
               <input
+              className="form-input"
                 name="email"
                 type="email"
                 placeholder="ana@ironhack.com"
                 value={this.state.email}
                 onChange={this.handleInputChange}
               />
-            </label>
+            
             <label>
               Password:
+              </label>
               <input
+              className="form-input"
                 name="password"
                 type="password"
                 placeholder="**********"
                 value={this.state.password}
                 onChange={this.handleInputChange}
               />
-            </label>
+            
 
             <button> Signup </button>
           </form>
 
           {/* if the message is not NULL then show the message */}
           {this.state.message && <div> {this.state.message} </div>}
-        </section>
-      </>
+        </div>
+      </div>
     );
   }
 }

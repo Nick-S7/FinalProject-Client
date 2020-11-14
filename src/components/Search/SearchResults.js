@@ -5,9 +5,9 @@ const SearchResults = (props) => {
   console.log(props)
   const options = props.results.map(r => (
 
-    <div className="single-attraction" key={r.idMeal} onClick={() =>{
+    <div className="single-attraction" key={r.id} onClick={() =>{
       props.handleSelectedEvent(r.id)
-      props.history.push(`/api/events/:${r.name}`)
+      props.history.push(`/events/${r.id}`)
   }} >
         <img src={r.images[0].url} alt="img"/>
         <div className="single-attraction-text">

@@ -236,7 +236,6 @@ input[type='text'],
   width: 20vw;
   font-family: cFont;
   color: white;
-  
 }
 
 .foot-section-2 {
@@ -258,6 +257,11 @@ input[type='text'],
   text-decoration: none;
 }
 
+.foot-section:hover, .foot-section-2:hover{
+  color: #F9BB80;
+  transition: all .5s ease-in-out;
+}
+
 .foot-section-2 img {
   width: 20vw;
 }
@@ -277,10 +281,137 @@ input[type='text'],
   justify-content: center;
   height: 30vw;
   align-items: center;
+  font-family: cFont;
+  color: #fff;
 }
 
 .login-form{
   display: flex;
   flex-direction: column;
   width: 50vw;
+  height: 15vw;
+  align-items: center;
+  background: linear-gradient(#ffffff00, #f9ba807a) fixed;
+  border-radius: 10%;
+
+}
+
+input[type='text'],
+.form-input{
+  width: 15vw;
+  text-align: center;
+  border: none;
+  color: black;
+  border-bottom: 1px solid white;
+  background-color: rgba(255, 255, 255, 0.479);
+  font-size: 18px;
+}
+
+
+.login-form div{
+  width: fit-content;
+  margin-top: .5vw;
+}
+
+.login-form form{
+  margin-top: 2vw;
+  align-items: inherit;
+  display: flex;
+  flex-direction: column;
+}
+
+.login-form h2{
+  color: #F9BB80;
+  margin-bottom: 0;
+}
+
+.email-label{
+  margin-right: 1.7vw;
+}
+
+.login-form button{
+  padding: .1vw;
+  all: unset;
+  text-decoration: none;
+  font-size: 1.2em;
+  font-weight: 500;
+  color: #fff;
+  letter-spacing: 1px;
+  border: 1px solid #F9BB80;
+  margin-top: 1vw;
+}
+
+.login-form button:hover{
+  padding: .2vw;
+  color: #F9BB80;
+  border-color: #fff;
+  transition: all 1s ease-in-out;
+}
+
+.signup-page{
+  display: flex;
+  justify-content: center;
+  height: 30vw;
+  align-items: center;
+  font-family: cFont;
+  color: #fff;
+}
+
+.signup-form{
+  display: flex;
+  flex-direction: column;
+  width: 50vw;
+  height: 16vw;
+  align-items: center;
+  background: linear-gradient(#ffffff00, #f9ba807a) fixed;
+  border-radius: 10%;
+}
+.signup-form h2{
+  margin-bottom: 0;
+  color: #F9BB80;
+
+}
+
+.signup-form form{
+  height: inherit;
+  display: flex;
+  flex-direction: column;
+  align-items: baseline;
+}
+
+.signup-form form label{
+  margin-top: .5vw;
+}
+
+.signup-form button{
+  all:unset;
+  align-self: center;
+  padding: .1vw;
+  text-decoration: none;
+  font-size: 1.2em;
+  font-weight: 500;
+  color: #fff;
+  letter-spacing: 1px;
+  border: 1px solid #F9BB80;
+  margin-top: 1vw;
+}
+
+.signup-form button:hover{
+  padding: .2vw;
+  color: #F9BB80;
+  border-color: #fff;
+  transition: all 1s ease-in-out;
+}
+
+.concert-page{
+  display: flex;
+  flex-direction: column;
+}
+
+.single-category{
+
+}
+
+.single-category img{
+  height: 5vw;
 }
