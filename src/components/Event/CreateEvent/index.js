@@ -7,7 +7,7 @@ export default class CreateEvent extends React.Component {
   state = {
     name: "",
     location: "",
-    price: "",
+    price: 0,
     date: "",
     image: "",
     comments: null,
@@ -26,11 +26,11 @@ export default class CreateEvent extends React.Component {
   //   });
   // };
 
-  // handleImageChange = (event) => {
-  //   const { file } = event.target;
+  handleImageChange = (event) => {
+    const { files } = event.target;
 
-  //   uploadData.append("image", file);
-  // };
+    this.setState({ image: files[0] });
+  };
 
   handleFormSubmission = (event) => {
     event.preventDefault();
@@ -38,9 +38,13 @@ export default class CreateEvent extends React.Component {
     const uploadData = new FormData();
 
     uploadData.append("name", this.state.name);
+    console.log(this.state.name);
     uploadData.append("location", this.state.location);
+    console.log(this.state.location);
     uploadData.append("price", this.state.price);
+    console.log(this.state.price);
     uploadData.append("date", this.state.date);
+    console.log(this.state.date);
     uploadData.append("image", this.state.image);
     uploadData.append("comments", this.state.comments);
     uploadData.append("creator", this.state.creator);
