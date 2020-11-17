@@ -49,7 +49,7 @@ class Search extends Component {
             </div>
 
             <>
-            <NavResults {...this.props} results={this.state.results} />
+            <NavResults {...this.props} handleSelectedEvent={this.props.handleSelectedEvent} results={this.state.results} />
             </>
       </div>
     );

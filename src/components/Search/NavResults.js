@@ -6,8 +6,8 @@ const SearchResults = (props) => {
   const options = props.results.map(r => (
 
     <div className="single-nav-result" key={r.idMeal} onClick={() =>{
-      props.handleMeals(r.idMeal)
-      props.history.push(`/meals:${r.strMeal}`)
+      props.handleSelectedEvent(r.id)
+      props.history.push(`/events/${r.id}`)
   }} >
         <img src={r.images[0].url} alt="img"/>
         <h2>{r.name}</h2>  

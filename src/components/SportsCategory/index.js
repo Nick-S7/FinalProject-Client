@@ -3,26 +3,26 @@ import axios from 'axios'
 
 export default class index extends Component {
     state = {
-        concerts : [],
+        sports : [],
     }
 
     componentDidMount(){
         console.log(this.props)
         axios
         .get(
-          `https://app.ticketmaster.com/discovery/v2/events.json?classificationName=music&apikey=CRaZgOHhS0iRjYSFURNt0YrDZs6z0nVR`
+          `https://app.ticketmaster.com/discovery/v2/events.json?classificationName=sports&apikey=CRaZgOHhS0iRjYSFURNt0YrDZs6z0nVR`
         )
         .then(( data ) => {
           this.setState({
-            concerts: data.data._embedded.events,
+            sports: data.data._embedded.events,
           });
-          console.log(this.state.concerts)
+          console.log(this.state.sports)
         });
     }
 
 
     render() {
-        const mappedConcerts = this.state.concerts.map(r => (
+        const mappedSports = this.state.sports.map(r => (
           
 
             <div className="single-category" key={r.id} onClick={() =>{
@@ -44,13 +44,13 @@ export default class index extends Component {
         
           ))
         return (
-            <div className="concerts">
-            <div className="concert-page">
-            <div className="concert-head">
-                <h2>Popular Artists & Upcoming Concerts</h2>
+            <div className="sports">
+            <div className="sports-page">
+            <div className="sports-head">
+                <h2>Popular Teams & Upcoming Sports Events</h2>
             </div>
-            <div className="concerts-list">
-                {mappedConcerts}
+            <div className="sports-list">
+                {mappedSports}
                 </div>
             </div>
             </div>
