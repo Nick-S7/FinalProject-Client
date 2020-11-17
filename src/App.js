@@ -9,6 +9,7 @@ import COMMENT_SERVICE from "./services/CommentService";
 
 import Signup from "./components/Authentication/Signup";
 import Login from "./components/Authentication/Login";
+import EditProfile from "./components/EditProfile";
 
 import Home from "./components/Home";
 import NavBar from "./components/NavBar";
@@ -16,9 +17,7 @@ import ProtectedRoute from "./components/ProtectedRoute";
 import Profile from "./components/Profile";
 import CreateEvent from "./components/Event/CreateEvent";
 import EventDetails from "./components/Event/EventDetails";
-// import CreateComment from "./components/Comment/CreateComment";
-// import BookDetails from "./components/Book/BookDetails";
-// import UpdateBook from "./components/Book/UpdateBook";
+
 import SearchBar from "./components/Search/SearchBar";
 import { createEvent } from "@testing-library/react";
 
@@ -27,7 +26,7 @@ export default class App extends React.Component {
     currentUser: null,
     authors: [],
     books: [],
-    selectedEvent: '',
+    selectedEvent: "",
   };
 
   componentDidMount = () => {
@@ -93,13 +92,12 @@ export default class App extends React.Component {
   };
 
   handleSelectedEvent = (event) => {
-    this.setState({selectedEvent : event})
-    console.log(event ,"=====", this.state.selectedEvent)
-  }
-
+    this.setState({ selectedEvent: event });
+    console.log(event, "=====", this.state.selectedEvent);
+  };
 
   render() {
-    console.log("user in client: ", this.state.currentUser);
+    // console.log("user in client: ", this.state.currentUser);
     return (
       <div className="App">
         <BrowserRouter>
@@ -117,8 +115,8 @@ export default class App extends React.Component {
               render={(props) => (
                 <Home
                   {...props}
-                  handleSelectedEvent = {this.handleSelectedEvent}
-                  selectedEvent = {this.state.selectedEvent}
+                  handleSelectedEvent={this.handleSelectedEvent}
+                  selectedEvent={this.state.selectedEvent}
                   events={this.state.events}
                   comments={this.state.comments}
                 />
@@ -137,6 +135,16 @@ export default class App extends React.Component {
                 <Login {...props} onUserChange={this.updateUser} />
               )}
             />
+
+            <ProtectedRoute
+              path="/edit-profile"
+              authorized={this.state.currentUser}
+              redirect={"/login-page"}
+              render={(props) => (
+                <EditProfile {...props} currentUser={this.state.currentUser} />
+              )}
+            />
+
             <Route path="/Search" render={(props) => <SearchBar />} />
 
             <ProtectedRoute
@@ -153,7 +161,7 @@ export default class App extends React.Component {
               authorized={this.state.currentUser}
               redirect={"/login-page"}
               render={(props) => (
-                <createEvent {...props} onEventsChange={this.updateEvents} />
+                <CreateEvent {...props} onEventsChange={this.updateEvents} />
               )}
             />
 
