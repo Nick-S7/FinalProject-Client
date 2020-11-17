@@ -20,6 +20,7 @@ import EventDetails from "./components/Event/EventDetails";
 
 import SearchBar from "./components/Search/SearchBar";
 import { createEvent } from "@testing-library/react";
+import ConcertCategory from './components/ConcertCategory'
 
 export default class App extends React.Component {
   state = {
@@ -209,6 +210,7 @@ export default class App extends React.Component {
             />
 
             <Route path="/Search" render={(props) => <SearchBar />} />
+            <Route path="/concerts" render={(props) => <ConcertCategory {...props} handleSelectedEvent={this.handleSelectedEvent}/>} />
           </Switch>
         </BrowserRouter>
       </div>

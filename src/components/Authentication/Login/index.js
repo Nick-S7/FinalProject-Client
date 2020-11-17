@@ -53,21 +53,24 @@ export default class Login extends React.Component {
 
           <form onSubmit={this.handleFormSubmission}>
           <div>
-            <label>
+            <label className="email-label">
               Email:
+              </label>
               <input
+              className="form-input"
                 name="email"
                 type="email"
                 placeholder="ana@ironhack.com"
                 value={this.state.email}
                 onChange={this.handleInputChange}
               />
-            </label>
+            
             </div>
             <div>
             <label>
               Password:
               <input
+              className="form-input"
                 name="password"
                 type="password"
                 placeholder="**********"

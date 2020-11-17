@@ -16,14 +16,17 @@ const Home = (props) => {
       
       <footer style={{ clear: "both" }}>
           <div className="footer">
+
+          <Link to='/concerts'>
             <div className="foot-section">
             <img  src="/second-crowd.png" alt="footer-pic"/>
             <h3> Artists, Concerts, and More...</h3>
             <p>
             Find all your favorite artists and concerts in one place! Make your own account to comment on events, and see what your friends had to say!
-
             </p>
             </div>
+            </Link>
+
             <Link to='/profile'>
             <div className="foot-section-2">
             <img src="/profile-silo.png"  alt="footer-pic"/>
@@ -33,6 +36,7 @@ const Home = (props) => {
             </p>
             </div>
             </Link>
+            
             
             <div className="foot-section">
             <img src="/sports-silo.png" alt="footer-pic"/>
