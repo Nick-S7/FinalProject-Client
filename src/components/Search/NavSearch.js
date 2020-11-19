@@ -6,21 +6,25 @@ class Search extends Component {
   state = {
     query: "",
     results: [],
+    open: false,
   };
-  
 
   getInfo = () => {
     axios
       .get(
         `https://app.ticketmaster.com/discovery/v2/events.json?keyword=${this.state.query}&countryCode=US&apikey=CRaZgOHhS0iRjYSFURNt0YrDZs6z0nVR`
       )
-      .then(( data ) => {
-          console.log(data.data)
+      .then((data) => {
+        console.log(data.data);
         this.setState({
           results: data.data._embedded.events,
         });
       });
   };
+
+  // componentDidUpdate(prevProps) {
+  //   if(this.props.)
+  // }
 
   handleInputChange = (e) => {
     const query = e.target.value;
@@ -35,22 +39,39 @@ class Search extends Component {
     }
   };
 
+  toggleDropdown() {
+    this.setState({ open: !this.state.open });
+  }
+
   render() {
+    console.log(this.props);
     return (
       <div className="nav-search">
-            <div className="nav-input">
-                <form>
-                    <input
-                     className="nav-search-field"
-                     placeholder="Search"
-                     onChange={this.handleInputChange}
-                     />
-                </form>
-            </div>
+        <div className="nav-input">
+          <div
+            style={{ border: "1px solid #CCC" }}
+            // onBlur={() => this.toggleDropdown()}
+            // onFocus={() => this.toggleDropdown()}
+            onClick={() => this.toggleDropdown()}
+            tabIndex="0"
+          >
+            <form>
+              <input
+                className="nav-search-field"
+                placeholder="Search"
+                onChange={this.handleInputChange}
+              />
+            </form>
+          </div>
 
-            <>
-            <NavResults {...this.props} handleSelectedEvent={this.props.handleSelectedEvent} results={this.state.results} />
-            </>
+          {this.state.open && (
+            <NavResults
+              {...this.props}
+              handleSelectedEvent={this.props.handleSelectedEvent}
+              results={this.state.results}
+            />
+          )}
+        </div>
       </div>
     );
   }

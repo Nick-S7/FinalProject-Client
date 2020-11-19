@@ -14,7 +14,7 @@ const NavBar = (props) => {
   };
   return (
     <nav>
-      <NavSearch handleSelectedEvent={props.handleSelectedEvent}/>
+      <NavSearch {...props} handleSelectedEvent={props.handleSelectedEvent}/>
       
 
       <div className="logo">

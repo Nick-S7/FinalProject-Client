@@ -83,6 +83,7 @@ input[type='text'],
   border: 1px solid white;
   background-color: #12232E;
   transition: all .7s;
+  cursor: pointer;
 }
 
 .single-attraction-text {
@@ -109,6 +110,7 @@ input[type='text'],
   color: #fff;
   letter-spacing: 1px;
   margin: 0;
+  cursor: pointer;
 }
 
 nav{
@@ -135,13 +137,14 @@ nav{
    color: #12232E;
    letter-spacing: 1.5px;
    transition: color .5s;
+   cursor: pointer;
  }
 
 
  .li-nav{
-   width: 30vw;
+   width: 10vw;
    display: flex;
-  justify-content: space-evenly;
+  justify-content: space-around;
   color: #fff;
 
  }
@@ -159,6 +162,7 @@ nav{
   color: #12232E;
   letter-spacing: 1.5px;
   transition: color .5s;
+  cursor: pointer;
  }
 
  .lo-nav-btn{
@@ -173,6 +177,7 @@ nav{
   color: #12232E;
   letter-spacing: 1.5px;
   transition: color .5s;
+  cursor: pointer;
  }
 
 
@@ -276,6 +281,7 @@ input[type='text'],
 .foot-section:hover, .foot-section-2:hover{
   color: #12232E;
   transition: all .5s ease-in-out;
+  cursor: pointer;
 }
 
 .foot-section-2 img {
@@ -446,6 +452,7 @@ justify-content: space-between;
   background-color: #12232E;
   color: #fff;
   transition: all .5s;
+  cursor: pointer;
 }
 
 .single-category h2{
@@ -517,5 +524,75 @@ justify-content: space-between;
   background-color: rgba(255, 255, 255, 0.86);
   width: 70vw;
   border: 1px solid #2b1f47;
+
+}
+
+
+.profile-page{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 45vw;
+
+}
+
+
+.profile{
+  height: 25vw;
+  width: 50vw;
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(#ffffff00, #f9ba807a) fixed;
+  border-radius: 10%;
+
+}
+
+
+.prof-pic{
+  width: 10vw;
+}
+
+
+.profile-head{
+  margin-top: 1vw;
+}
+
+.profile-head h3{
+  font-size: 1.6em;
+  font-weight: 300;
+  margin-top: .5vw;
+  color: #fff;
+}
+
+.profile-head p{
+  font-size: 1.1em;
+  font-weight: 300;
+  color: #fff;
+}
+
+.profile-links{
+  display: flex;
+  justify-content: space-around;
+}
+
+.profile-links a{
+  padding: .1vw;
+  all: unset;
+  text-decoration: none;
+  font-size: 1.2em;
+  font-weight: 500;
+  color: #fff;
+  letter-spacing: 1px;
+  border: 1px solid #12232E;
+  margin-top: 1vw;
+  height: fit-content;
+}
+
+.profile-links a:hover{
+  padding: .2vw;
+  color: #12232E;
+  border-color: #fff;
+  transition: all 1s ease-in-out;
+  cursor: pointer;
 
 }

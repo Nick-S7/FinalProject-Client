@@ -27,8 +27,9 @@ export default class App extends React.Component {
   state = {
     currentUser: null,
     authors: [],
-    books: [],
+    events: [],
     selectedEvent: "",
+    
   };
 
   componentDidMount = () => {
@@ -105,7 +106,7 @@ export default class App extends React.Component {
         <BrowserRouter>
           <nav>
             <NavBar
-            handleSelectedEvent={this.handleSelectedEvent}
+              handleSelectedEvent={this.handleSelectedEvent}
               currentUser={this.state.currentUser}
               onUserChange={this.updateUser}
             />
