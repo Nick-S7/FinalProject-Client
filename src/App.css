@@ -278,9 +278,16 @@ input[type='text'],
   text-decoration: none;
 }
 
-.foot-section:hover, .foot-section-2:hover{
+
+.foot-text{
+  background-color: #12232e49
+}
+
+
+.foot-section:hover > .foot-text, .foot-section-2:hover > .foot-text {
+  background-color: rgba(255, 255, 255, 0.103);
   color: #12232E;
-  transition: all .5s ease-in-out;
+  transition: all .3s ease-in-out;
   cursor: pointer;
 }
 
@@ -290,7 +297,7 @@ input[type='text'],
 
 
 .special-pic{
-  width: 15vw;
+  padding-bottom: 2.5vw;
 }
 
 .foot-section img{
@@ -319,7 +326,7 @@ input[type='text'],
 }
 
 input[type='text'],
-.form-input{
+.input-field{
   width: 15vw;
   text-align: center;
   border: none;
@@ -368,6 +375,7 @@ input[type='text'],
   color: #12232E;
   border-color: #fff;
   transition: all 1s ease-in-out;
+  cursor: pointer;
 }
 
 .signup-page{
@@ -423,6 +431,7 @@ input[type='text'],
   color: #12232E;
   border-color: #fff;
   transition: all 1s ease-in-out;
+  cursor: pointer;
 }
 
 .concerts{
@@ -595,4 +604,90 @@ justify-content: space-between;
   transition: all 1s ease-in-out;
   cursor: pointer;
 
+}
+
+.details-page{
+  display: flex;
+  justify-content: center;
+
+}
+
+.details-container{
+  width: 80vw;
+}
+
+
+.details-head h3{
+  color: white;
+  font-weight: 100;
+  font-size: 1.5vw;
+} 
+
+.details-details{
+  background: radial-gradient(#ffffff00,#ffffff94) fixed;
+  padding: .5em;
+  display: flex;
+  flex-direction: column;
+}
+
+.details-details p{
+  letter-spacing: 1.10px;
+  font-weight: 600;
+}
+
+.top-half-details{
+  display: flex;
+  justify-content: space-around;
+
+}
+
+.details-img{
+  width: 27vw;
+}
+
+.details-details a{
+  padding: .1vw;
+  all: unset;
+  text-decoration: none;
+  font-size: 1.2em;
+  font-weight: 500;
+  color: #fff;
+  letter-spacing: 1px;
+  border: 1px solid #12232E;
+}
+
+.details-details a:hover{
+  color: #12232E;
+  border-color: #fff;
+  transition: all 1s ease-in-out;
+  cursor: pointer;
+}
+
+.delete-event-btn{
+  padding: .1vw;
+  all: unset;
+  text-decoration: none;
+  font-size: 1.2em;
+  font-weight: 500;
+  color: #fff;
+  letter-spacing: 1px;
+  border: 1px solid #12232E;
+  
+}
+
+.delete-event-btn:hover{
+  color: #12232E;
+  border-color: #fff;
+  transition: all 1s ease-in-out;
+  cursor: pointer;
+}
+
+.add-comment{
+  display: flex;
+  flex-direction: column;
+}
+
+input[type='text'], .comment-input{
+  width: 45vw;
+  height: 5vw;
 }

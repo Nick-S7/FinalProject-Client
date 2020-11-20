@@ -30,7 +30,7 @@ export default class index extends Component {
 
             <div className="single-category" key={r.id} onClick={() =>{
               this.props.handleSelectedEvent(r.id)
-              this.props.history.push(`/events/${r.id}`)
+              this.props.history.push(`/api/events/${r.id}`)
           }} >
                 <img src={r.images[0].url} alt="img"/>
                 <div className="single-cat-head">

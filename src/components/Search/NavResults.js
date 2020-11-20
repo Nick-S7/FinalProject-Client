@@ -10,7 +10,7 @@ const SearchResults = (props) => {
       console.log(props)
       props.handleSelectedEvent(r.id)
       props.clearSearch()
-      history.push(`/events/${r.id}`)
+      history.push(`/api/events/${r.id}`)
       window.location.reload()
   }} >
         <img src={r.images[0].url} alt="img"/>

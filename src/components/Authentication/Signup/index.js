@@ -62,11 +62,11 @@ export default class Signup extends React.Component {
                 onChange={this.handleInputChange}
               />
             
-            <label className="">
+            <label>
               Email:
               </label>
               <input
-              className="form-input"
+              className="input-field"
                 name="email"
                 type="email"
                 placeholder="ana@ironhack.com"
@@ -78,7 +78,7 @@ export default class Signup extends React.Component {
               Password:
               </label>
               <input
-              className="form-input"
+              className="input-field"
                 name="password"
                 type="password"
                 placeholder="**********"

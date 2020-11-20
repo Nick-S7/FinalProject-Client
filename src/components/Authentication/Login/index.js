@@ -57,7 +57,7 @@ export default class Login extends React.Component {
               Email:
               </label>
               <input
-              className="form-input"
+              className="input-field"
                 name="email"
                 type="email"
                 placeholder="ana@ironhack.com"
@@ -70,7 +70,7 @@ export default class Login extends React.Component {
             <label>
               Password:
               <input
-              className="form-input"
+              className="input-field"
                 name="password"
                 type="password"
                 placeholder="**********"

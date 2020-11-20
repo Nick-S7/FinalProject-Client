@@ -108,10 +108,10 @@ export default class CommentForm extends React.Component {
       <section>
         <h2> Add a Comment </h2>
 
-        <form onSubmit={this.handleFormSubmission}>
+        <form className="add-comment" onSubmit={this.handleFormSubmission}>
           <label>
-            Title
             <input
+            className="comment-input"
               name="content"
               type="text"
               rows="5"
