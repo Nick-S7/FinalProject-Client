@@ -101,51 +101,72 @@ export default class EventDetails extends Component {
 
     return (
       //need to debug why comments are not rendered even though the state does display the comments.
-      <section>
-        <h3>{event?.name}</h3>
-        <img
+      <div className="details-page">
+      <div className="details-container">
+      <div className="top-half-details">
+
+      
+      <div className="details-head">
+
+        <img className="details-img"
           src={
             event?.image || event?._embedded?.attractions?.[0]?.images?.[1]?.url
           }
-          width="850"
-          height="450"
           alt="venue"
         />
+
+         <h3>{event?.name}</h3>
+        </div>
+
+          <div className="details-details">
+            <p>
+              When: {event?.date || event.dates?.start?.localDate} 
+            </p>
+            <p>
+              Where:{" "}
+              {event?.location || event?._embedded?.venues?.[0]?.name}
+            </p>
+
+            <p>Price: ${event?.price || event?.priceRanges?.[0]?.min}</p>
+
+            <a href={event?.url}>Purchase Tickets</a>
+
+            <h3>Information about this event: </h3>
         <p>
-          When: {event?.date || event.dates?.start?.localDate} at{" "}
-          {event?.location || event?._embedded?.venues?.[0]?.name}
+          {event?.info || event?.pleaseNote || "This is a custom event created by the community!"}
         </p>
-        <p>Price: ${event?.price || event?.priceRanges?.[0]?.min}</p>
-        <a href={event?.url}>Purchase Tickets</a>
-        <h3>Information about this event: </h3>
-        <p>
-          {event?.info || "This is a custom event created by the community!"}
-        </p>
-        <h4>Event created by {event?.creator || "Ticketmaster"}</h4>
-        <br />
-        <>
-          <Link
-            to={{
-              pathname: `/api/events/${event?.id}/update`,
-              event: this.state.event,
-            }}
-          >
-            Edit
-          </Link>
-          <br />
-          <button onClick={() => this.deleteUserEvent(event.id)}>
-            Delete Event
-          </button>
-        </>
+
+            <h4>Event created by {event?.creator || "Ticketmaster"}</h4>
+
+            <br />
+            <>
+              <Link
+                to={{
+                  pathname: `/api/events/${event?.id}/update`,
+                  event: this.state.event,
+                }}
+              >
+                Edit
+              </Link>
+              <br />
+
+              <button className="delete-event-btn" onClick={() => this.deleteUserEvent(event.id)}>
+                Delete Event
+              </button>
+            </>
+          </div>
+
+        </div>
         <br />
         <CommentForm
           {...this.props}
           onCommentsChange={this.props.onCommentsChange}
           addComment={this.addComment}
         />
-        <h2>Comments</h2>
+        <h2 className="comment-head">Comments</h2>
         <ListComments comments={this.state.comments} />
-      </section>
+        </div>
+      </div>
     );
   }
 }

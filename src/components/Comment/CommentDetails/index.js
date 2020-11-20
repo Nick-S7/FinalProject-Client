@@ -6,11 +6,15 @@ const CommentDetails = (props) => {
 
   return (
     <div className="comment-container">
+
+    <h5>{author} commented: </h5>
+
+    <p>{content}</p>
+
       <small className="comment-time">
-        {new Date(createdAt).toLocaleDateString()}
+       <span>@</span> {new Date(createdAt).toLocaleDateString()}
       </small>
-      <h5>{author}</h5>
-      <p>{content}</p>
+
     </div>
   );
 };

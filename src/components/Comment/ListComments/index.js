@@ -3,14 +3,14 @@ import CommentDetails from "../CommentDetails";
 
 const ListComments = (props) => {
   return (
-    <section className="commentList">
+    <section className="comment-list">
       {props.comments?.length === 0 && !props.loading ? (
         <div className="no-comment-alert">
           Be the first to comment on this event!
         </div>
       ) : null}
-      <ul>
-        <ul>
+      <ul className="comment-list">
+        <ul className="comment-list">
           {props.comments?.map((c, index) => (
             <CommentDetails key={index} comment={c} />
           ))}

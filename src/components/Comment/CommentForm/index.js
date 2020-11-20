@@ -119,13 +119,15 @@ export default class CommentForm extends React.Component {
     const { content, author } = this.state.comment;
 
     return (
-      <section>
-        <h2> Add a Comment </h2>
+      <div className="center-add-com">
 
-        <form onSubmit={this.handleFormSubmission}>
+      <section className="add-comment-bkg">
+        <h2 className="comment-head"> Add a Comment </h2>
+
+        <form className="add-comment" onSubmit={this.handleFormSubmission}>
           <label>
-            Title
             <input
+            className="comment-input"
               name="content"
               type="text"
               rows="5"
@@ -137,12 +139,14 @@ export default class CommentForm extends React.Component {
 
           {this.renderError()}
 
-          <button> Submit Comment </button>
+          <button className="submit-comment-btn"> Submit Comment </button>
           {/* <button disabled={this.state.loading}> Submit Comment </button> */}
         </form>
 
         {/* {message && <div>{message}</div>} */}
       </section>
+      </div>
     );
+
   }
 }

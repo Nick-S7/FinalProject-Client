@@ -278,9 +278,16 @@ input[type='text'],
   text-decoration: none;
 }
 
-.foot-section:hover, .foot-section-2:hover{
+
+.foot-text{
+  background-color: #12232e49
+}
+
+
+.foot-section:hover > .foot-text, .foot-section-2:hover > .foot-text {
+  background-color: rgba(255, 255, 255, 0.103);
   color: #12232E;
-  transition: all .5s ease-in-out;
+  transition: all .3s ease-in-out;
   cursor: pointer;
 }
 
@@ -290,7 +297,7 @@ input[type='text'],
 
 
 .special-pic{
-  width: 15vw;
+  padding-bottom: 2.5vw;
 }
 
 .foot-section img{
@@ -319,7 +326,7 @@ input[type='text'],
 }
 
 input[type='text'],
-.form-input{
+.input-field{
   width: 15vw;
   text-align: center;
   border: none;
@@ -368,6 +375,7 @@ input[type='text'],
   color: #12232E;
   border-color: #fff;
   transition: all 1s ease-in-out;
+  cursor: pointer;
 }
 
 .signup-page{
@@ -423,6 +431,7 @@ input[type='text'],
   color: #12232E;
   border-color: #fff;
   transition: all 1s ease-in-out;
+  cursor: pointer;
 }
 
 .concerts{
@@ -576,8 +585,8 @@ justify-content: space-between;
 }
 
 .profile-links a{
-  padding: .1vw;
   all: unset;
+  padding: .1vw;
   text-decoration: none;
   font-size: 1.2em;
   font-weight: 500;
@@ -595,4 +604,173 @@ justify-content: space-between;
   transition: all 1s ease-in-out;
   cursor: pointer;
 
+}
+
+.details-page{
+  display: flex;
+  justify-content: center;
+  margin-top: 3vw;
+}
+
+
+
+.details-container{
+  width: 80vw;
+}
+
+
+.details-head h3{
+  color: white;
+  font-weight: 100;
+  font-size: 1.5vw;
+} 
+
+.details-details{
+  background: radial-gradient(#ffffff00,#ffffff94) fixed;
+  padding: .5em;
+  display: flex;
+  flex-direction: column;
+  width: 35vw;
+  
+}
+
+.details-details h3{
+  margin-bottom: 0;
+}
+
+.details-details p{
+  letter-spacing: 1.10px;
+  font-weight: 600;
+}
+
+.top-half-details{
+  display: flex;
+  justify-content: space-around;
+
+}
+
+.details-img{
+  width: 27vw;
+}
+
+.details-details a{
+  all: unset;
+  padding: .1vw;
+  text-decoration: none;
+  font-size: 1.2em;
+  font-weight: 500;
+  color: #12232E;
+  letter-spacing: 1px;
+  border: 1.5px solid #fff;
+  width: fit-content;
+  align-self: center;
+}
+
+.details-details a:hover{
+  color: #fff;
+  background-color: #12232e4b;
+  border-color: #12232E;
+  transition: all .5s ease-in-out;
+  cursor: pointer;
+}
+
+.delete-event-btn{
+  all: unset;
+  padding: .1vw;
+  text-decoration: none;
+  font-size: 1.2em;
+  font-weight: 500;
+  color: #12232E;
+  letter-spacing: 1px;
+  border: 1.5px solid #fff;
+  width: fit-content;
+  align-self: center;
+  
+}
+
+.delete-event-btn:hover{
+  color: #fff;
+  background-color: #12232e4b;
+  border-color: #12232E;
+  transition: all .5s ease-in-out;
+  cursor: pointer;
+}
+
+.add-comment{
+  display: flex;
+  flex-direction: column;
+}
+
+input[type='text'], .comment-input{
+  width: 45vw;
+  height: 5vw;
+}
+
+.submit-comment-btn {
+  all: unset;
+  padding: .1vw;
+  margin-top: 1vw;
+  text-decoration: none;
+  font-size: 1.2em;
+  font-weight: 500;
+  color: #12232E;
+  letter-spacing: 1px;
+  border: 1px solid #fff;
+  width: fit-content;
+  align-self: center;
+}
+
+.submit-comment-btn:hover{
+  color: #fff;
+  background-color: #12232e4b;
+  border-color: #12232E;
+  transition: all .5s ease-in-out;
+  cursor: pointer;
+}
+
+.comment-list{
+  padding: 0;
+  margin: 0;
+
+}
+
+.comment-container {
+  background-color: #12232E;
+  color: #fff;
+  border: 1px solid white;
+  display: flex;
+  flex-direction: column;
+  margin-top: .5vw;
+
+}
+
+.comment-container p {
+  margin-top: 0;
+}
+
+.comment-container h5{
+  letter-spacing: 1.10px;
+  font-size: 1em;
+  font-weight: 600;
+}
+
+.comment-time{
+  align-self: flex-end;
+  margin-right: .5vw;
+}
+
+.comment-head{
+  color: #fff;
+  letter-spacing: 1.10px;
+  font-weight: 100;
+}
+
+.add-comment-bkg{
+  padding-bottom: .2vw;
+  width: fit-content;
+}
+
+.center-add-com{
+  display: flex;
+  justify-content: center;
 }

@@ -104,8 +104,8 @@ export default class CreateEvent extends React.Component {
       creator,
     } = this.state;
     return (
-      <>
-        <section>
+      <div className="signup-page">
+        <div className="signup-form">
           <h2> Create new Event </h2>
 
           <form onSubmit={(event) => this.handleFormSubmission(event)}>
@@ -172,8 +172,8 @@ export default class CreateEvent extends React.Component {
           </form>
 
           {/* {message && <div>{message}</div>} */}
-        </section>
-      </>
+        </div>
+      </div>
     );
   }
 }
