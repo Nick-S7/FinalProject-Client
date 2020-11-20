@@ -48,20 +48,28 @@ export default class CommentForm extends React.Component {
       return;
     }
 
+    let { author, content } = this.state.comment;
+
     this.setState({
       error: "",
-      // loading: true
+      // loading: true,
     });
-
-    let { author, content } = this.state;
 
     //populate comment on Db.
 
     COMMENT_SERVICE.createComment({ author, content })
       .then((responseFromServer) => {
-        const { comment } = responseFromServer.data;
-        // this.props.onCommentsChange(comment);
+        const { comment } = this.state.comment;
         console.log("props: ", this.props);
+        console.log(
+          "comment: ",
+          comment,
+          "responseFromServer: ",
+          responseFromServer,
+          "state: ",
+          this.state
+        );
+        this.props.onCommentsChange(comment);
         console.log(comment);
         this.props.history.push("/");
 

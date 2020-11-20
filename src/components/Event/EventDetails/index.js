@@ -138,7 +138,11 @@ export default class EventDetails extends Component {
           </button>
         </>
         <br />
-        <CommentForm addComment={this.addComment} />
+        <CommentForm
+          {...this.props}
+          onCommentsChange={this.props.onCommentsChange}
+          addComment={this.addComment}
+        />
         <h2>Comments</h2>
         <ListComments comments={this.state.comments} />
       </section>
