@@ -94,6 +94,10 @@ export default class EventDetails extends Component {
     // console.log("checking if state was set to event: ", event);
     // console.log("checking for nested objects in state: ", event.priceRanges);
     // console.log(`any comments? ${mappedComments?.[0]}`);
+    const formattedDbDate = new Date(event?.date).toLocaleDateString();
+    const formattedApiDate = new Date(
+      event?.dates?.start?.localDate
+    ).toLocaleDateString();
 
     return (
       //need to debug why comments are not rendered even though the state does display the comments.
@@ -108,7 +112,7 @@ export default class EventDetails extends Component {
           alt="venue"
         />
         <p>
-          When: {event?.date || event?.dates?.start?.localDate} at{" "}
+          When: {formattedDbDate || formattedApiDate} at{" "}
           {event?.location || event?._embedded?.venues?.[0]?.name}
         </p>
         <p>Price: ${event?.price || event?.priceRanges?.[0]?.min}</p>
@@ -131,7 +135,7 @@ export default class EventDetails extends Component {
         <br />
         <h2>Comments</h2>
         <CommentForm addComment={this.addComment} />
-        <ListComments />
+        <ListComments comments={this.state.comments} />
       </section>
     );
   }

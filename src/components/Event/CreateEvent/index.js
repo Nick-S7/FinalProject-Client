@@ -28,6 +28,7 @@ export default class CreateEvent extends React.Component {
 
   handleImageChange = (event) => {
     const { files } = event.target;
+    console.log(event.target);
 
     this.setState({ image: files[0] });
   };
@@ -36,6 +37,7 @@ export default class CreateEvent extends React.Component {
     event.preventDefault();
 
     const uploadData = new FormData();
+    const formattedDate = new Date(this.state.date).toLocaleDateString();
 
     uploadData.append("name", this.state.name);
     console.log(this.state.name);
@@ -43,40 +45,43 @@ export default class CreateEvent extends React.Component {
     console.log(this.state.location);
     uploadData.append("price", this.state.price);
     console.log(this.state.price);
-    uploadData.append("date", this.state.date);
+    uploadData.append("date", formattedDate);
     console.log(this.state.date);
     uploadData.append("image", this.state.image);
-    uploadData.append("comments", this.state.comments);
+    // uploadData.append("comments", this.state.comments);
     uploadData.append("creator", this.state.creator);
 
-    EVENT_SERVICE.createEvent(
-      uploadData,
-      {
-        headers: { "Content-Type": "multipart/form-data" },
-        withCredentials: true,
-      }
-      // {
-      //   name,
-      //   location,
-      //   price,
-      //   date,
-      //   image,
-      //   comments,
-      //   creator,
-      // }
-    )
+    axios
+      .post(
+        "http://localhost:3001/api/events/create",
+        uploadData,
+        {
+          headers: { "Content-Type": "multipart/form-data" },
+          withCredentials: true,
+        }
+        // {
+        //   name,
+        //   location,
+        //   price,
+        //   date,
+        //   image,
+        //   comments,
+        //   creator,
+        // }
+      )
       .then((responseFromServer) => {
         this.fileInput.value = "";
         const { event } = responseFromServer.data;
-
+        console.log(responseFromServer.data);
         this.props.onEventsChange(event);
         this.props.history.push("/");
 
         this.setState({
-          title: "",
+          name: "",
+          location: "",
           price: 0,
-          inStock: false,
-          description: "",
+          date: "",
+          image: "",
         });
       })
       .catch((err) => {
