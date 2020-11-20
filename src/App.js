@@ -16,7 +16,7 @@ import ProtectedRoute from "./components/ProtectedRoute";
 import Profile from "./components/Profile";
 import CreateEvent from "./components/Event/CreateEvent";
 import EventDetails from "./components/Event/EventDetails";
-// import CommentForm from "./components/Comment/CommentForm";
+import CommentForm from "./components/Comment/CommentForm";
 //import ListComments from "./components/Comment/ListComments"
 
 import SearchBar from "./components/Search/SearchBar";
@@ -150,7 +150,7 @@ export default class App extends React.Component {
               )}
             />
 
-            {/* <ProtectedRoute
+            <ProtectedRoute
               path="/api/events/:eventId/comment"
               authorized={this.state.currentUser}
               redirect={"/login-page"}
@@ -161,7 +161,7 @@ export default class App extends React.Component {
                   onCommentsChange={this.updateComments}
                 />
               )}
-            /> */}
+            />
             <Route
               path="/api/events/:id"
               render={(props) => (
