@@ -585,8 +585,8 @@ justify-content: space-between;
 }
 
 .profile-links a{
-  padding: .1vw;
   all: unset;
+  padding: .1vw;
   text-decoration: none;
   font-size: 1.2em;
   font-weight: 500;
@@ -609,8 +609,10 @@ justify-content: space-between;
 .details-page{
   display: flex;
   justify-content: center;
-
+  margin-top: 3vw;
 }
+
+
 
 .details-container{
   width: 80vw;
@@ -628,6 +630,12 @@ justify-content: space-between;
   padding: .5em;
   display: flex;
   flex-direction: column;
+  width: 35vw;
+  
+}
+
+.details-details h3{
+  margin-bottom: 0;
 }
 
 .details-details p{
@@ -646,39 +654,45 @@ justify-content: space-between;
 }
 
 .details-details a{
-  padding: .1vw;
   all: unset;
+  padding: .1vw;
   text-decoration: none;
   font-size: 1.2em;
   font-weight: 500;
-  color: #fff;
+  color: #12232E;
   letter-spacing: 1px;
-  border: 1px solid #12232E;
+  border: 1.5px solid #fff;
+  width: fit-content;
+  align-self: center;
 }
 
 .details-details a:hover{
-  color: #12232E;
-  border-color: #fff;
-  transition: all 1s ease-in-out;
+  color: #fff;
+  background-color: #12232e4b;
+  border-color: #12232E;
+  transition: all .5s ease-in-out;
   cursor: pointer;
 }
 
 .delete-event-btn{
-  padding: .1vw;
   all: unset;
+  padding: .1vw;
   text-decoration: none;
   font-size: 1.2em;
   font-weight: 500;
-  color: #fff;
+  color: #12232E;
   letter-spacing: 1px;
-  border: 1px solid #12232E;
+  border: 1.5px solid #fff;
+  width: fit-content;
+  align-self: center;
   
 }
 
 .delete-event-btn:hover{
-  color: #12232E;
-  border-color: #fff;
-  transition: all 1s ease-in-out;
+  color: #fff;
+  background-color: #12232e4b;
+  border-color: #12232E;
+  transition: all .5s ease-in-out;
   cursor: pointer;
 }
 
@@ -690,4 +704,73 @@ justify-content: space-between;
 input[type='text'], .comment-input{
   width: 45vw;
   height: 5vw;
+}
+
+.submit-comment-btn {
+  all: unset;
+  padding: .1vw;
+  margin-top: 1vw;
+  text-decoration: none;
+  font-size: 1.2em;
+  font-weight: 500;
+  color: #12232E;
+  letter-spacing: 1px;
+  border: 1px solid #fff;
+  width: fit-content;
+  align-self: center;
+}
+
+.submit-comment-btn:hover{
+  color: #fff;
+  background-color: #12232e4b;
+  border-color: #12232E;
+  transition: all .5s ease-in-out;
+  cursor: pointer;
+}
+
+.comment-list{
+  padding: 0;
+  margin: 0;
+
+}
+
+.comment-container {
+  background-color: #12232E;
+  color: #fff;
+  border: 1px solid white;
+  display: flex;
+  flex-direction: column;
+  margin-top: .5vw;
+
+}
+
+.comment-container p {
+  margin-top: 0;
+}
+
+.comment-container h5{
+  letter-spacing: 1.10px;
+  font-size: 1em;
+  font-weight: 600;
+}
+
+.comment-time{
+  align-self: flex-end;
+  margin-right: .5vw;
+}
+
+.comment-head{
+  color: #fff;
+  letter-spacing: 1.10px;
+  font-weight: 100;
+}
+
+.add-comment-bkg{
+  padding-bottom: .2vw;
+  width: fit-content;
+}
+
+.center-add-com{
+  display: flex;
+  justify-content: center;
 }

@@ -94,10 +94,10 @@ export default class EventDetails extends Component {
     // console.log("checking if state was set to event: ", event);
     // console.log("checking for nested objects in state: ", event.priceRanges);
     // console.log(`any comments? ${mappedComments?.[0]}`);
-    const formattedDbDate = new Date(event?.date).toLocaleDateString();
-    const formattedApiDate = new Date(
-      event?.dates?.start?.localDate
-    ).toLocaleDateString();
+    // const formattedDbDate = new Date(event?.date).toLocaleDateString();
+    // const formattedApiDate = new Date(
+    //   event?.dates?.start?.localDate
+    // ).toLocaleDateString();
 
     return (
       //need to debug why comments are not rendered even though the state does display the comments.
@@ -120,7 +120,7 @@ export default class EventDetails extends Component {
 
           <div className="details-details">
             <p>
-              When: {formattedDbDate || formattedApiDate} 
+              When: {event?.date || event.dates?.start?.localDate} 
             </p>
             <p>
               Where:{" "}
@@ -128,6 +128,13 @@ export default class EventDetails extends Component {
             </p>
 
             <p>Price: ${event?.price || event?.priceRanges?.[0]?.min}</p>
+
+            <a href={event?.url}>Purchase Tickets</a>
+
+            <h3>Information about this event: </h3>
+        <p>
+          {event?.info || event?.pleaseNote || "This is a custom event created by the community!"}
+        </p>
 
             <h4>Event created by {event?.creator || "Ticketmaster"}</h4>
 
@@ -151,8 +158,12 @@ export default class EventDetails extends Component {
 
         </div>
         <br />
-        <h2>Comments</h2>
-        <CommentForm addComment={this.addComment} />
+        <CommentForm
+          {...this.props}
+          onCommentsChange={this.props.onCommentsChange}
+          addComment={this.addComment}
+        />
+        <h2 className="comment-head">Comments</h2>
         <ListComments comments={this.state.comments} />
         </div>
       </div>
