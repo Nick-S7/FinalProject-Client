@@ -1,6 +1,5 @@
 import React from "react";
 import "./App.css";
-
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 
 import AUTH_SERVICE from "./services/AuthService";
@@ -17,11 +16,13 @@ import ProtectedRoute from "./components/ProtectedRoute";
 import Profile from "./components/Profile";
 import CreateEvent from "./components/Event/CreateEvent";
 import EventDetails from "./components/Event/EventDetails";
+// import CommentForm from "./components/Comment/CommentForm";
+//import ListComments from "./components/Comment/ListComments"
 
 import SearchBar from "./components/Search/SearchBar";
 import { createEvent } from "@testing-library/react";
-import ConcertCategory from './components/ConcertCategory'
-import SportsCategory from './components/SportsCategory'
+import ConcertCategory from "./components/ConcertCategory";
+import SportsCategory from "./components/SportsCategory";
 
 export default class App extends React.Component {
   state = {
@@ -29,7 +30,6 @@ export default class App extends React.Component {
     authors: [],
     events: [],
     selectedEvent: "",
-    
   };
 
   componentDidMount = () => {
@@ -45,21 +45,9 @@ export default class App extends React.Component {
 
         this.setState({ events, comments, currentUser: user });
       })
-      .catch((err) => console.log(err));
-
-    // AUTHOR_SERVICE.getAuthors()
-    //   .then(responseFromServer => {
-    //     const { authors } = responseFromServer.data;
-    //     this.setState({ authors });
-
-    //     return AUTH_SERVICE.getAuthenticatedUser();
-    //   })
-    //   .then(responseFromServer => {
-    //     const { user } = responseFromServer.data;
-
-    //     this.updateUser(user);
-    //   })
-    //   .catch(err => console.log(err));
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
   updateUser = (user) => {
@@ -71,19 +59,12 @@ export default class App extends React.Component {
     this.setState({ events: updatedEvents });
   };
 
-  // updateComments = (comment) => {
-  //   const updatedComments = [...this.state.comments, comment];
-  //   this.setState({ comments: updatedComments });
-  // };
+  updateComments = (comment) => {
+    const updatedComments = [...this.state.comments, comment];
+    this.setState({ comments: updatedComments });
+  };
 
   updateEventsAfterDelete = (id) => {
-    // BOOK_SERVICE.getBooks()
-    //   .then(responseFromServer => {
-    //     const { books } = responseFromServer.data;
-    //     this.setState({ books });
-    //   })
-    //   .catch(err => console.log(err));
-
     const updatedEvents = [...this.state.events];
 
     updatedEvents.splice(
@@ -100,7 +81,7 @@ export default class App extends React.Component {
   };
 
   render() {
-    // console.log("user in client: ", this.state.currentUser);
+    // const loadingSpin = this.state.loading ? "App-logo-spin" : "App-logo";
     return (
       <div className="App">
         <BrowserRouter>
@@ -170,37 +151,17 @@ export default class App extends React.Component {
             />
 
             {/* <ProtectedRoute
-              path="/comments/create"
+              path="/api/events/:eventId/comment"
               authorized={this.state.currentUser}
               redirect={"/login-page"}
               render={(props) => (
-                <CreateComment
+                <CommentForm
                   {...props}
                   events={this.state.events}
                   onCommentsChange={this.updateComments}
                 />
               )}
             /> */}
-
-            {/* <ProtectedRoute
-              path="/books/:id/edit"
-              authorized={this.state.currentUser}
-              redirect={"/login-page"}
-              render={(props) => (
-                <UpdateBook {...props} authors={this.state.authors} />
-              )}
-            /> */}
-            <Route
-              path="/events/:id"
-              render={(props) => (
-                <EventDetails
-                  {...props}
-                  currentUser={this.state.currentUser}
-                  onEventsChangeAfterDelete={this.updateEventsAfterDelete}
-                />
-              )}
-            />
-
             <Route
               path="/api/events/:id"
               render={(props) => (
@@ -213,8 +174,35 @@ export default class App extends React.Component {
             />
 
             <Route path="/Search" render={(props) => <SearchBar />} />
-            <Route path="/concerts" render={(props) => <ConcertCategory {...props} handleSelectedEvent={this.handleSelectedEvent}/>} />
-            <Route path="/sports" render={(props) => <SportsCategory {...props} handleSelectedEvent={this.handleSelectedEvent}/>} />
+            <Route
+              path="/concerts"
+              render={(props) => (
+                <ConcertCategory
+                  {...props}
+                  handleSelectedEvent={this.handleSelectedEvent}
+                />
+              )}
+            />
+
+            <Route path="/Search" render={(props) => <SearchBar />} />
+            <Route
+              path="/concerts"
+              render={(props) => (
+                <ConcertCategory
+                  {...props}
+                  handleSelectedEvent={this.handleSelectedEvent}
+                />
+              )}
+            />
+            <Route
+              path="/sports"
+              render={(props) => (
+                <SportsCategory
+                  {...props}
+                  handleSelectedEvent={this.handleSelectedEvent}
+                />
+              )}
+            />
           </Switch>
         </BrowserRouter>
       </div>

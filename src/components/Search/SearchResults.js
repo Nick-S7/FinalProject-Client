@@ -8,7 +8,7 @@ const SearchResults = (props) => {
       key={r.id}
       onClick={() => {
         props.handleSelectedEvent(r.id);
-        props.history.push(`/events/${r.id}`);
+        props.history.push(`/api/events/${r.id}`);
       }}
     >
       <img src={r.images[0].url} alt="img" />
