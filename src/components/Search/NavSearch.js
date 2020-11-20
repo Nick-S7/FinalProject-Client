@@ -43,6 +43,10 @@ class Search extends Component {
     this.setState({ open: !this.state.open });
   }
 
+  clearSearch = () => {
+    this.setState({query: '', open: false, results: []})
+  }
+
   render() {
     console.log(this.props);
     return (
@@ -67,6 +71,7 @@ class Search extends Component {
           {this.state.open && (
             <NavResults
               {...this.props}
+              clearSearch={this.clearSearch}
               handleSelectedEvent={this.props.handleSelectedEvent}
               results={this.state.results}
             />

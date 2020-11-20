@@ -9,6 +9,7 @@ const SearchResults = (props) => {
     <div className="single-nav-result" key={r.idMeal} onClick={() =>{
       console.log(props)
       props.handleSelectedEvent(r.id)
+      props.clearSearch()
       history.push(`/events/${r.id}`)
       window.location.reload()
   }} >
