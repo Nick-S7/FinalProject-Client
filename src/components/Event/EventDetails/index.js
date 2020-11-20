@@ -3,12 +3,25 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import EVENT_SERVICE from "../../../services/EventService";
 import COMMENT_SERVICE from "../../../services/CommentService";
+import ListComments from "../../Comment/ListComments";
+import CommentForm from "../../Comment/CommentForm";
 
 export default class EventDetails extends Component {
-  state = {
-    event: {},
-    comments: [],
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      event: {},
+      comments: [],
+    };
+
+    this.addComment = this.addComment.bind(this);
+  }
+
+  addComment(comment) {
+    this.setState({
+      comments: [...this.state.comments, comment],
+    });
+  }
 
   loadEventDetails = () => {
     const eventId = this.props.match.params.id;
@@ -45,8 +58,10 @@ export default class EventDetails extends Component {
     const eId = this.props.match.params.id;
     COMMENT_SERVICE.getComments(eId)
       .then((responseFromServer) => {
-        const { allComments } = responseFromServer.data;
-        this.setState({ comments: allComments });
+        console.log(eId);
+        const { comments } = responseFromServer.data;
+        console.log(responseFromServer.data);
+        this.setState({ comments });
       })
       .catch((err) =>
         console.log(`error getting comments for this event: ${err}`)
@@ -55,7 +70,7 @@ export default class EventDetails extends Component {
 
   componentDidMount() {
     this.loadEventDetails();
-    // this.getEventComments();
+    this.getEventComments();
   }
 
   deleteUserEvent = (eventId) => {
@@ -66,37 +81,37 @@ export default class EventDetails extends Component {
           this.props.history.push("/");
         })
         .catch((err) => console.log(`error deleting a user event: ${err}`));
-    }
+    } else
+      console.log(
+        "events from the API cannot be deleted. Make this easier for the user to see outside the console."
+      );
   };
 
   render() {
     // console.log(this.state.event, "1");
     const { event } = this.state;
-    const mappedComments = this.state.comments.map((c) => {
-      <div className="single-comment" key={c._id}>
-        <h3>{c.author}</h3>
-        <br />
-        <p>{c.content}</p>
-      </div>;
-    });
-    console.log("checking if state was set to event: ", event);
-    console.log("checking for nested objects in state: ", event.priceRanges);
-    console.log(`any comments? ${mappedComments}`);
+    console.log(this.state.comments);
+    // console.log("checking if state was set to event: ", event);
+    // console.log("checking for nested objects in state: ", event.priceRanges);
+    // console.log(`any comments? ${mappedComments?.[0]}`);
 
     return (
+      //need to debug why comments are not rendered even though the state does display the comments.
       <section>
         <h3>{event?.name}</h3>
         <img
-          src={event?.image || event?._embedded?.attractions[0]?.images[1]?.url}
+          src={
+            event?.image || event?._embedded?.attractions?.[0]?.images?.[1]?.url
+          }
           width="850"
           height="450"
           alt="venue"
         />
         <p>
           When: {event?.date || event?.dates?.start?.localDate} at{" "}
-          {event?.location || event?._embedded?.venues[0]?.name}
+          {event?.location || event?._embedded?.venues?.[0]?.name}
         </p>
-        <p>Price: ${event?.price || event?.priceRanges?.min}</p>
+        <p>Price: ${event?.price || event?.priceRanges?.[0]?.min}</p>
         <h4>Event created by {event?.creator || "Ticketmaster"}</h4>
         <br />
         <>
@@ -115,7 +130,8 @@ export default class EventDetails extends Component {
         </>
         <br />
         <h2>Comments</h2>
-        <div>{mappedComments}</div>
+        <CommentForm addComment={this.addComment} />
+        <ListComments />
       </section>
     );
   }
