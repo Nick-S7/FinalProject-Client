@@ -87,6 +87,10 @@ export default class EventDetails extends Component {
       );
   };
 
+  // formatDate = (date) => {
+  //   return date.split(" ").splice(1, 3).join(" ");
+  // };
+
   render() {
     // console.log(this.state.event, "1");
     const { event } = this.state;
@@ -94,10 +98,6 @@ export default class EventDetails extends Component {
     // console.log("checking if state was set to event: ", event);
     // console.log("checking for nested objects in state: ", event.priceRanges);
     // console.log(`any comments? ${mappedComments?.[0]}`);
-    // const formattedDbDate = new Date(event?.date).toLocaleDateString();
-    // const formattedApiDate = new Date(
-    //   event?.dates?.start?.localDate
-    // ).toLocaleDateString();
 
     return (
       //need to debug why comments are not rendered even though the state does display the comments.

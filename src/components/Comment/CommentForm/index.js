@@ -48,7 +48,8 @@ export default class CommentForm extends React.Component {
       return;
     }
 
-    let { author, content } = this.state.comment;
+    let { author } = this.props.currentUser.username;
+    let { content } = this.state.comment;
 
     this.setState({
       error: "",
@@ -59,8 +60,8 @@ export default class CommentForm extends React.Component {
 
     COMMENT_SERVICE.createComment({ author, content })
       .then((responseFromServer) => {
-        const { comment } = this.state.comment;
-        console.log("props: ", this.props);
+        const { comment } = this.state;
+        // console.log("props: ", this.props);
         console.log(
           "comment: ",
           comment,
