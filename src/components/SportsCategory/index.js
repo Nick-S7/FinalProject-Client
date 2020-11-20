@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import axios from 'axios'
+import AUTH_SERVICE from '../../services/AuthService'
 
 export default class index extends Component {
     state = {
@@ -8,6 +9,8 @@ export default class index extends Component {
 
     componentDidMount(){
         console.log(this.props)
+        AUTH_SERVICE.getAuthenticatedUser().then((res)=> console.log(res)).catch((err) => console.log(err));
+
         axios
         .get(
           `https://app.ticketmaster.com/discovery/v2/events.json?classificationName=sports&apikey=CRaZgOHhS0iRjYSFURNt0YrDZs6z0nVR`
