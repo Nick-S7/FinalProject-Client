@@ -22,6 +22,7 @@ const NavBar = (props) => {
          <h3 className="logo-text">Atlas</h3>
         </Link>
       </div>
+      
       <div>
         {(props.currentUser && (
           <div className="li-nav">
