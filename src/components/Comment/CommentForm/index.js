@@ -33,28 +33,44 @@ export default class CommentForm extends React.Component {
     });
   };
 
+  isFormValid() {
+    return (
+      this.state.comment.author !== "" && this.state.comment.content !== ""
+    );
+  }
+
   //handle comment submission
   handleFormSubmission = (event) => {
     event.preventDefault();
 
-    if (!this.isFormValid()) {
+    if (this.isFormValid()) {
       this.setState({ error: "Please enter a comment before submitting." });
       return;
     }
 
+    let { author, content } = this.state.comment;
+
     this.setState({
       error: "",
-      // loading: true
+      // loading: true,
     });
-
-    let { author, content } = this.state;
 
     //populate comment on Db.
 
     COMMENT_SERVICE.createComment({ author, content })
       .then((responseFromServer) => {
-        const { comment } = responseFromServer.data;
+        const { comment } = this.state.comment;
+        console.log("props: ", this.props);
+        console.log(
+          "comment: ",
+          comment,
+          "responseFromServer: ",
+          responseFromServer,
+          "state: ",
+          this.state
+        );
         this.props.onCommentsChange(comment);
+        console.log(comment);
         this.props.history.push("/");
 
         //clear the comment form
@@ -64,10 +80,7 @@ export default class CommentForm extends React.Component {
         });
       })
       .catch((err) => {
-        this.setState({
-          // loading: false,
-          error: err.response.data,
-        });
+        console.log(err);
       });
 
     // BOOK_SERVICE.createBook({ content, author })
@@ -101,7 +114,7 @@ export default class CommentForm extends React.Component {
   //   };
 
   render() {
-    console.log("comment: ", this.state.comment.content);
+    // console.log("comment: ", this.state.comment.content);
     const { content, author } = this.state.comment;
 
     return (

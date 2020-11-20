@@ -49,7 +49,7 @@ export default class CreateEvent extends React.Component {
     console.log(this.state.date);
     uploadData.append("image", this.state.image);
     // uploadData.append("comments", this.state.comments);
-    uploadData.append("creator", this.state.creator);
+    uploadData.append("creator", this.state.creator.username);
 
     axios
       .post(
@@ -74,7 +74,7 @@ export default class CreateEvent extends React.Component {
         const { event } = responseFromServer.data;
         console.log(responseFromServer.data);
         this.props.onEventsChange(event);
-        this.props.history.push("/");
+        this.props.history.push(`/api/events/${event._id}`);
 
         this.setState({
           name: "",
