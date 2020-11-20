@@ -37,7 +37,7 @@ const Home = (props) => {
             </div>
             </Link>
             
-            
+            <Link to ='/sports'>
             <div className="foot-section">
             <img src="/sports-silo.png" alt="footer-pic"/>
             <h3>Sporting Events</h3>
@@ -45,6 +45,7 @@ const Home = (props) => {
               Search for times, dates, locations, and more details on any upcoming sporting event!
             </p>
             </div>
+            </Link>
 
           </div>
           </footer>

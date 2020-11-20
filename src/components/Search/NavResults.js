@@ -1,4 +1,5 @@
 import React from 'react'
+import history from '../history'
 
 const SearchResults = (props) => {
 
@@ -6,8 +7,11 @@ const SearchResults = (props) => {
   const options = props.results.map(r => (
 
     <div className="single-nav-result" key={r.idMeal} onClick={() =>{
-      props.handleMeals(r.idMeal)
-      props.history.push(`/meals:${r.strMeal}`)
+      console.log(props)
+      props.handleSelectedEvent(r.id)
+      props.clearSearch()
+      history.push(`/events/${r.id}`)
+      window.location.reload()
   }} >
         <img src={r.images[0].url} alt="img"/>
         <h2>{r.name}</h2>  

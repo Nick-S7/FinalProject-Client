@@ -14,11 +14,12 @@ const NavBar = (props) => {
   };
   return (
     <nav>
-      <NavSearch />
+      <NavSearch {...props} handleSelectedEvent={props.handleSelectedEvent}/>
+      
 
       <div className="logo">
         <Link to="/">
-          <strong>BookClub</strong>
+         <h3 className="logo-text">Atlas</h3>
         </Link>
       </div>
       <div>

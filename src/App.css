@@ -6,11 +6,17 @@
 
 .App {
   text-align: center;
-  background: linear-gradient(#93a5cf,#2b1f47) fixed;
   font-family: cFont;
 }
+
 html {
-  background: linear-gradient(#93a5cf,#2b1f47) fixed;
+  background-image: url('./possible2.png');
+  background-size: cover;
+  background-attachment: scroll;
+}
+
+a{
+  all: unset;
 }
 
 .search {
@@ -66,7 +72,7 @@ input[type='text'],
   display: flex;
   height: fit-content;
   margin: .5em;
-  border: 1px solid  #F9BB80;
+  border: 1px solid  #12232E;
   color: white;
   align-items: center;
   font-size: .7em;
@@ -75,9 +81,9 @@ input[type='text'],
 
 .single-attraction:hover {
   border: 1px solid white;
-  background-color: #F9BB80;
-  color: rgb(0, 0, 0);
+  background-color: #12232E;
   transition: all .7s;
+  cursor: pointer;
 }
 
 .single-attraction-text {
@@ -94,6 +100,17 @@ input[type='text'],
 
 .logo{
   width: 20vw;
+  margin-right: 3vw;
+}
+
+.logo-text{
+  all: unset;
+  font-size: 2em;
+  font-weight: 500;
+  color: #fff;
+  letter-spacing: 1px;
+  margin: 0;
+  cursor: pointer;
 }
 
 nav{
@@ -117,16 +134,17 @@ nav{
   letter-spacing: 1px;
 }
  .lo-nav a:hover{
-   color: #F9BB80;
+   color: #12232E;
    letter-spacing: 1.5px;
    transition: color .5s;
+   cursor: pointer;
  }
 
 
  .li-nav{
-   width: 30vw;
+   width: 10vw;
    display: flex;
-  justify-content: space-evenly;
+  justify-content: space-around;
   color: #fff;
 
  }
@@ -141,9 +159,10 @@ nav{
  }
 
  .li-nav a:hover {
-  color: #F9BB80;
+  color: #12232E;
   letter-spacing: 1.5px;
   transition: color .5s;
+  cursor: pointer;
  }
 
  .lo-nav-btn{
@@ -155,9 +174,10 @@ nav{
  }
 
  .lo-nav-btn:hover{
-  color: #F9BB80;
+  color: #12232E;
   letter-spacing: 1.5px;
   transition: color .5s;
+  cursor: pointer;
  }
 
 
@@ -165,9 +185,10 @@ nav{
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
+  margin-left: .1vw;
   z-index: 2;
   position: absolute;
-  background-color: rgba(255, 255, 255, 0.26);
+  background-color: rgba(255, 255, 255, 0.70);
 }
 
 .single-nav-result{
@@ -211,8 +232,8 @@ input[type='text'],
   font-weight: 100;
   margin-top: .3em;
   margin-bottom: 0;
-  color: #F9BB80;
-  background: -webkit-linear-gradient(rgba(238, 238, 238, 0),#F9BB80);
+  color: #12232E;
+  background: -webkit-linear-gradient(rgba(238, 238, 238, 0),#12232E);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 
@@ -243,13 +264,13 @@ input[type='text'],
   display: flex;
   flex-direction: column;
   justify-content: center;
-  border-left: 2px solid #F9BB80;
-  border-right: 2px solid #F9BB80;
+  border-left: 2px solid #12232E;
+  border-right: 2px solid #12232E;
   padding: 0 5vw;
   border-image: 
   linear-gradient(
     to bottom, 
-    #F9BB80, 
+    #12232E, 
     rgba(0, 0, 0, 0)
   ) 1 100%;
   font-family: cFont;
@@ -258,8 +279,9 @@ input[type='text'],
 }
 
 .foot-section:hover, .foot-section-2:hover{
-  color: #F9BB80;
+  color: #12232E;
   transition: all .5s ease-in-out;
+  cursor: pointer;
 }
 
 .foot-section-2 img {
@@ -321,7 +343,7 @@ input[type='text'],
 }
 
 .login-form h2{
-  color: #F9BB80;
+  color: #12232E;
   margin-bottom: 0;
 }
 
@@ -337,13 +359,13 @@ input[type='text'],
   font-weight: 500;
   color: #fff;
   letter-spacing: 1px;
-  border: 1px solid #F9BB80;
+  border: 1px solid #12232E;
   margin-top: 1vw;
 }
 
 .login-form button:hover{
   padding: .2vw;
-  color: #F9BB80;
+  color: #12232E;
   border-color: #fff;
   transition: all 1s ease-in-out;
 }
@@ -368,7 +390,7 @@ input[type='text'],
 }
 .signup-form h2{
   margin-bottom: 0;
-  color: #F9BB80;
+  color: #12232E;
 
 }
 
@@ -392,26 +414,185 @@ input[type='text'],
   font-weight: 500;
   color: #fff;
   letter-spacing: 1px;
-  border: 1px solid #F9BB80;
+  border: 1px solid #12232E;
   margin-top: 1vw;
 }
 
 .signup-form button:hover{
   padding: .2vw;
-  color: #F9BB80;
+  color: #12232E;
   border-color: #fff;
   transition: all 1s ease-in-out;
+}
+
+.concerts{
+  background-image: url('./background-spread.png');
+  background-attachment: fixed;
+  background-size: cover;
+  font-family: cFont;
 }
 
 .concert-page{
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
 }
 
 .single-category{
+display: flex;
+border-bottom: 1px solid #2b1f47;
+justify-content: space-between;
 
 }
 
+.single-category:hover {
+  border: 1px solid white;
+  background-color: #12232E;
+  color: #fff;
+  transition: all .5s;
+  cursor: pointer;
+}
+
+.single-category h2{
+  margin-top: 0;
+}
+
+.single-category h3{
+  margin-right: .5vw;
+}
+
 .single-category img{
-  height: 5vw;
+  width: 8vw;
+}
+
+.concert-head{
+  background: radial-gradient(#ffffff00,#ffffff6e) fixed;
+  width: 99vw;
+  margin-bottom: 1vw;
+  border-bottom: 1px solid #2b1f47;
+}
+
+
+.concerts-list{
+  background-color: rgba(255, 255, 255, 0.66);
+  width: 70vw;
+  border: 1px solid #2b1f47;
+
+}
+
+.cat-dates{
+  width: 8vw;
+  display: flex;
+  align-items: center;
+  font-weight: 700;
+  letter-spacing: 1px;
+
+}
+
+.cat-dates p{
+  margin: 0;
+}
+
+
+
+.sports{
+  background-image: url('./sports-bkg.png');
+  background-attachment: fixed;
+  background-size: cover;
+  font-family: cFont;
+}
+
+.sports-page{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+}
+
+.sports-head{
+  background: radial-gradient(#ffffff00,#ffffffa2) fixed;
+  width: 99vw;
+  margin-bottom: 1vw;
+  border-bottom: 1px solid #2b1f47;
+}
+
+
+.sports-list{
+  background-color: rgba(255, 255, 255, 0.86);
+  width: 70vw;
+  border: 1px solid #2b1f47;
+
+}
+
+
+.profile-page{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 45vw;
+
+}
+
+
+.profile{
+  height: 25vw;
+  width: 50vw;
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(#ffffff00, #f9ba807a) fixed;
+  border-radius: 10%;
+
+}
+
+
+.prof-pic{
+  width: 10vw;
+}
+
+
+.profile-head{
+  margin-top: 1vw;
+}
+
+.profile-head h3{
+  font-size: 1.6em;
+  font-weight: 300;
+  margin-top: .5vw;
+  color: #fff;
+}
+
+.profile-head p{
+  font-size: 1.1em;
+  font-weight: 300;
+  color: #fff;
+}
+
+.profile-links{
+  display: flex;
+  justify-content: space-around;
+}
+
+.profile-links a{
+  padding: .1vw;
+  all: unset;
+  text-decoration: none;
+  font-size: 1.2em;
+  font-weight: 500;
+  color: #fff;
+  letter-spacing: 1px;
+  border: 1px solid #12232E;
+  margin-top: 1vw;
+  height: fit-content;
+}
+
+.profile-links a:hover{
+  padding: .2vw;
+  color: #12232E;
+  border-color: #fff;
+  transition: all 1s ease-in-out;
+  cursor: pointer;
+
 }

@@ -22,12 +22,13 @@ import EventDetails from "./components/Event/EventDetails";
 import SearchBar from "./components/Search/SearchBar";
 import { createEvent } from "@testing-library/react";
 import ConcertCategory from "./components/ConcertCategory";
+import SportsCategory from "./components/SportsCategory";
 
 export default class App extends React.Component {
   state = {
     currentUser: null,
+    authors: [],
     events: [],
-    comments: [],
     selectedEvent: "",
   };
 
@@ -86,6 +87,7 @@ export default class App extends React.Component {
         <BrowserRouter>
           <nav>
             <NavBar
+              handleSelectedEvent={this.handleSelectedEvent}
               currentUser={this.state.currentUser}
               onUserChange={this.updateUser}
             />
@@ -176,6 +178,26 @@ export default class App extends React.Component {
               path="/concerts"
               render={(props) => (
                 <ConcertCategory
+                  {...props}
+                  handleSelectedEvent={this.handleSelectedEvent}
+                />
+              )}
+            />
+
+            <Route path="/Search" render={(props) => <SearchBar />} />
+            <Route
+              path="/concerts"
+              render={(props) => (
+                <ConcertCategory
+                  {...props}
+                  handleSelectedEvent={this.handleSelectedEvent}
+                />
+              )}
+            />
+            <Route
+              path="/sports"
+              render={(props) => (
+                <SportsCategory
                   {...props}
                   handleSelectedEvent={this.handleSelectedEvent}
                 />
