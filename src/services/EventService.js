@@ -17,8 +17,8 @@ const EVENT_SERVICE = {
   updateEvent(eventData) {
     return service.post("/api/events/:id/update", eventData);
   },
-  deleteEvent(eventData) {
-    return service.post("/api/events/:eventId/delete", eventData);
+  deleteEvent(eventId) {
+    return service.post(`/api/events/${eventId}/delete`, eventId);
   },
   getEventDetails(id) {
     return service.get(`/api/events/${id}`);
