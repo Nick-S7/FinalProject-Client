@@ -14,10 +14,10 @@ class Search extends Component {
       .get(
         `https://app.ticketmaster.com/discovery/v2/events.json?keyword=${this.state.query}&countryCode=US&apikey=CRaZgOHhS0iRjYSFURNt0YrDZs6z0nVR`
       )
-      .then((data) => {
-        console.log(data.data);
+      .then((response) => {
+        console.log(response.data);
         this.setState({
-          results: data.data._embedded.events,
+          results: response.data._embedded?.events || [],
         });
       });
   };
@@ -28,6 +28,7 @@ class Search extends Component {
 
   handleInputChange = (e) => {
     const query = e.target.value;
+    const results = this.state.results;
     this.setState({
       query,
     });
@@ -35,6 +36,8 @@ class Search extends Component {
       if (query.length % 2 === 0) {
         this.getInfo();
       }
+    } else if (!results) {
+      this.setState({ results: [] });
     } else if (!query) {
     }
   };
@@ -44,8 +47,8 @@ class Search extends Component {
   }
 
   clearSearch = () => {
-    this.setState({query: '', open: false, results: []})
-  }
+    this.setState({ query: "", open: false, results: [] });
+  };
 
   render() {
     console.log(this.props);

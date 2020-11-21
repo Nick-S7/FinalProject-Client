@@ -17,15 +17,6 @@ const COMMENT_SERVICE = {
   deleteComment(eventId, commentId) {
     return service.post(`/api/events/${eventId}/comments/${commentId}/delete`);
   },
-  // deleteBook(id) {
-  //   return service.post(`/api/books/${id}/delete`, {});
-  // },
-  // updateBook(id, bookData) {
-  //   return service.post(`/api/books/${id}/update`, bookData);
-  // },
-  // getBookDetails(id) {
-  //   return service.get(`/api/books/${id}`);
-  // }
 };
 
 export default COMMENT_SERVICE;

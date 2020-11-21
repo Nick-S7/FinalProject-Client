@@ -2,7 +2,6 @@ import React from "react";
 
 const CommentDetails = (props) => {
   const { author, content, createdAt, _id } = props.comment;
-  console.log(props);
 
   return (
     <div className="comment-container">

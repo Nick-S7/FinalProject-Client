@@ -80,6 +80,11 @@ export default class EventDetails extends Component {
     this.getEventComments();
   }
 
+  updateComments = (comment) => {
+    const updatedComments = [...this.state.comments, comment];
+    this.setState({ comments: updatedComments });
+  };
+
   deleteUserEvent = (eventId) => {
     if (eventId.length > 16) {
       EVENT_SERVICE.deleteEvent(eventId)
@@ -166,13 +171,16 @@ export default class EventDetails extends Component {
           <br />
           <CommentForm
             {...this.props}
-            onCommentsChange={this.props.onCommentsChange}
             addComment={this.addComment}
+            updateComments={this.updateComments}
+            getComments={this.getComments}
+            event={event}
           />
           <h2 className="comment-head">Comments</h2>
           <ListComments
             comments={this.state.comments}
             {...this.props}
+            event={event}
             handleDeleteComment={this.handleDeleteComment}
           />
         </div>

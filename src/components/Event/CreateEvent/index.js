@@ -37,40 +37,18 @@ export default class CreateEvent extends React.Component {
     event.preventDefault();
 
     const uploadData = new FormData();
-    // const formatDate = (date) => {
-    //   return date.split(" ").splice(1, 3).join(" ");
-    // };
-    console.log(this.state.currentUser);
     uploadData.append("name", this.state.name);
-    console.log(this.state.name);
     uploadData.append("location", this.state.location);
-    console.log(this.state.location);
     uploadData.append("price", this.state.price);
-    console.log(this.state.price);
     uploadData.append("date", this.state.date);
-    console.log(this.state.date);
     uploadData.append("image", this.state.image);
-    // uploadData.append("comments", this.state.comments);
     uploadData.append("creator", this.props.currentUser.username);
 
     axios
-      .post(
-        "http://localhost:3001/api/events/create",
-        uploadData,
-        {
-          headers: { "Content-Type": "multipart/form-data" },
-          withCredentials: true,
-        }
-        // {
-        //   name,
-        //   location,
-        //   price,
-        //   date,
-        //   image,
-        //   comments,
-        //   creator,
-        // }
-      )
+      .post("http://localhost:3001/api/events/create", uploadData, {
+        headers: { "Content-Type": "multipart/form-data" },
+        withCredentials: true,
+      })
       .then((responseFromServer) => {
         this.fileInput.value = "";
         const { event } = responseFromServer.data;
