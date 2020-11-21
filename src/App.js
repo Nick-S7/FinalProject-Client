@@ -122,7 +122,7 @@ export default class App extends React.Component {
             />
 
             <ProtectedRoute
-              path="/edit-profile"
+              path="/api/edit-profile"
               authorized={this.state.currentUser}
               redirect={"/login-page"}
               render={(props) => (
@@ -146,7 +146,11 @@ export default class App extends React.Component {
               authorized={this.state.currentUser}
               redirect={"/login-page"}
               render={(props) => (
-                <CreateEvent {...props} onEventsChange={this.updateEvents} />
+                <CreateEvent
+                  {...props}
+                  currentUser={this.state.currentUser}
+                  onEventsChange={this.updateEvents}
+                />
               )}
             />
 
@@ -158,6 +162,7 @@ export default class App extends React.Component {
                 <CommentForm
                   {...props}
                   events={this.state.events}
+                  currentUser={this.state.currentUser}
                   onCommentsChange={this.updateComments}
                 />
               )}

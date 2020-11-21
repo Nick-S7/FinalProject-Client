@@ -37,19 +37,21 @@ export default class CreateEvent extends React.Component {
     event.preventDefault();
 
     const uploadData = new FormData();
-    const formattedDate = new Date(this.state.date).toLocaleDateString();
-
+    // const formatDate = (date) => {
+    //   return date.split(" ").splice(1, 3).join(" ");
+    // };
+    console.log(this.state.currentUser);
     uploadData.append("name", this.state.name);
     console.log(this.state.name);
     uploadData.append("location", this.state.location);
     console.log(this.state.location);
     uploadData.append("price", this.state.price);
     console.log(this.state.price);
-    uploadData.append("date", formattedDate);
+    uploadData.append("date", this.state.date);
     console.log(this.state.date);
     uploadData.append("image", this.state.image);
     // uploadData.append("comments", this.state.comments);
-    uploadData.append("creator", this.state.creator.username);
+    uploadData.append("creator", this.props.currentUser.username);
 
     axios
       .post(
@@ -106,11 +108,14 @@ export default class CreateEvent extends React.Component {
         <div className="create-events-form">
           <h2> Create new Event </h2>
 
-          <form className="create-event" onSubmit={(event) => this.handleFormSubmission(event)}>
+          <form
+            className="create-event"
+            onSubmit={(event) => this.handleFormSubmission(event)}
+          >
             <label>
               Event Name:
               <input
-              className="create-input"
+                className="create-input"
                 name="name"
                 type="text"
                 placeholder="Coachella 2021"
@@ -122,7 +127,7 @@ export default class CreateEvent extends React.Component {
             <label>
               Location:
               <input
-              className="create-input"
+                className="create-input"
                 name="location"
                 type="text"
                 placeholder="Empire Polo Club"
@@ -134,7 +139,7 @@ export default class CreateEvent extends React.Component {
             <label>
               Price:
               <input
-              className="create-input"
+                className="create-input"
                 name="price"
                 type="number"
                 placeholder="429"
@@ -145,7 +150,7 @@ export default class CreateEvent extends React.Component {
             <label>
               Date:
               <input
-              className="create-input"
+                className="create-input"
                 name="date"
                 type="date"
                 placeholder="04/13/2020"
@@ -156,7 +161,7 @@ export default class CreateEvent extends React.Component {
             <label>
               Add an image:{" "}
               <input
-              className="create-input"
+                className="create-input"
                 id="imageInput"
                 type="file"
                 name="image"
