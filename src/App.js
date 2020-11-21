@@ -122,7 +122,7 @@ export default class App extends React.Component {
             />
 
             <ProtectedRoute
-              path="/edit-profile"
+              path="/api/edit-profile"
               authorized={this.state.currentUser}
               redirect={"/login-page"}
               render={(props) => (
