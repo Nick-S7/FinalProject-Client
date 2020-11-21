@@ -12,7 +12,7 @@ const ListComments = (props) => {
       <ul className="comment-list">
         <ul className="comment-list">
           {props.comments?.map((c, index) => (
-            <CommentDetails key={index} comment={c} />
+            <CommentDetails key={index} comment={c} {...props} />
           ))}
         </ul>
       </ul>

@@ -23,10 +23,20 @@ export default class EventDetails extends Component {
     });
   }
 
+  handleDeleteComment = (commentId) => {
+    COMMENT_SERVICE.deleteComment(this.state.event._id, commentId).then(() => {
+      // const comments = this.state.event.comments.filter((c) => c !== commentId);
+      // const event = { ...this.state.event, comments };
+      this.setState({
+        // event,
+        comments: this.state.comments.filter((c) => c._id !== commentId),
+      });
+    });
+  };
+
   loadEventDetails = () => {
     const eventId = this.props.match.params.id;
     const baseUrl = `https://app.ticketmaster.com/discovery/v2/events/`;
-    console.log(eventId);
 
     //check the id length of the event which will determine whether event should be loaded via API or DB
     if (eventId.length < 20) {
@@ -34,7 +44,6 @@ export default class EventDetails extends Component {
       axios
         .get(`${baseUrl}/${eventId}?apikey=CRaZgOHhS0iRjYSFURNt0YrDZs6z0nVR`)
         .then((responseFromApi) => {
-          console.log("response from axios:", responseFromApi.data);
           // console.log(this.props);
           //set the state to the responseFromApi
           this.setState({ event: responseFromApi.data });
@@ -58,9 +67,7 @@ export default class EventDetails extends Component {
     const eId = this.props.match.params.id;
     COMMENT_SERVICE.getComments(eId)
       .then((responseFromServer) => {
-        console.log(eId);
         const { comments } = responseFromServer.data;
-        console.log(responseFromServer.data);
         this.setState({ comments });
       })
       .catch((err) =>
@@ -102,69 +109,73 @@ export default class EventDetails extends Component {
     return (
       //need to debug why comments are not rendered even though the state does display the comments.
       <div className="details-page">
-      <div className="details-container">
-      <div className="top-half-details">
+        <div className="details-container">
+          <div className="top-half-details">
+            <div className="details-head">
+              <img
+                className="details-img"
+                src={
+                  event?.image ||
+                  event?._embedded?.attractions?.[0]?.images?.[1]?.url
+                }
+                alt="venue"
+              />
 
-      
-      <div className="details-head">
+              <h3>{event?.name}</h3>
+            </div>
 
-        <img className="details-img"
-          src={
-            event?.image || event?._embedded?.attractions?.[0]?.images?.[1]?.url
-          }
-          alt="venue"
-        />
+            <div className="details-details">
+              <p>When: {event?.date || event.dates?.start?.localDate}</p>
+              <p>
+                Where: {event?.location || event?._embedded?.venues?.[0]?.name}
+              </p>
 
-         <h3>{event?.name}</h3>
-        </div>
+              <p>Price: ${event?.price || event?.priceRanges?.[0]?.min}</p>
 
-          <div className="details-details">
-            <p>
-              When: {event?.date || event.dates?.start?.localDate} 
-            </p>
-            <p>
-              Where:{" "}
-              {event?.location || event?._embedded?.venues?.[0]?.name}
-            </p>
+              <a href={event?.url}>Purchase Tickets</a>
 
-            <p>Price: ${event?.price || event?.priceRanges?.[0]?.min}</p>
+              <h3>Information about this event: </h3>
+              <p>
+                {event?.info ||
+                  event?.pleaseNote ||
+                  "This is a custom event created by the community!"}
+              </p>
 
-            <a href={event?.url}>Purchase Tickets</a>
+              <h4>Event created by {event?.creator || "Ticketmaster"}</h4>
 
-            <h3>Information about this event: </h3>
-        <p>
-          {event?.info || event?.pleaseNote || "This is a custom event created by the community!"}
-        </p>
-
-            <h4>Event created by {event?.creator || "Ticketmaster"}</h4>
-
-            <br />
-            <>
-              <Link
-                to={{
-                  pathname: `/api/events/${event?.id}/update`,
-                  event: this.state.event,
-                }}
-              >
-                Edit
-              </Link>
               <br />
+              <>
+                <Link
+                  to={{
+                    pathname: `/api/events/${event?.id}/update`,
+                    event: this.state.event,
+                  }}
+                >
+                  Edit
+                </Link>
+                <br />
 
-              <button className="delete-event-btn" onClick={() => this.deleteUserEvent(event.id)}>
-                Delete Event
-              </button>
-            </>
+                <button
+                  className="delete-event-btn"
+                  onClick={() => this.deleteUserEvent(event.id)}
+                >
+                  Delete Event
+                </button>
+              </>
+            </div>
           </div>
-
-        </div>
-        <br />
-        <CommentForm
-          {...this.props}
-          onCommentsChange={this.props.onCommentsChange}
-          addComment={this.addComment}
-        />
-        <h2 className="comment-head">Comments</h2>
-        <ListComments comments={this.state.comments} />
+          <br />
+          <CommentForm
+            {...this.props}
+            onCommentsChange={this.props.onCommentsChange}
+            addComment={this.addComment}
+          />
+          <h2 className="comment-head">Comments</h2>
+          <ListComments
+            comments={this.state.comments}
+            {...this.props}
+            handleDeleteComment={this.handleDeleteComment}
+          />
         </div>
       </div>
     );
