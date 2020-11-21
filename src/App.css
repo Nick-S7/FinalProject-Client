@@ -586,22 +586,25 @@ justify-content: space-between;
 
 .profile-links a{
   all: unset;
+  align-self: center;
+  all: unset;
   padding: .1vw;
+  margin-top: 1vw;
   text-decoration: none;
   font-size: 1.2em;
   font-weight: 500;
-  color: #fff;
+  color: #12232E;
   letter-spacing: 1px;
-  border: 1px solid #12232E;
-  margin-top: 1vw;
-  height: fit-content;
+  border: 1px solid #fff;
+  width: fit-content;
+  align-self: center;
 }
 
 .profile-links a:hover{
-  padding: .2vw;
-  color: #12232E;
-  border-color: #fff;
-  transition: all 1s ease-in-out;
+  color: #fff;
+  background-color: #12232e4b;
+  border-color: #12232E;
+  transition: all .5s ease-in-out;
   cursor: pointer;
 
 }
@@ -773,4 +776,78 @@ input[type='text'], .comment-input{
 .center-add-com{
   display: flex;
   justify-content: center;
+}
+
+.create-events-page{
+  display: flex;
+  justify-content: center;
+  height: 40vw;
+  align-items: center;
+  font-family: cFont;
+  color: #fff;
+}
+
+.create-events-form {
+  display: flex;
+  flex-direction: column;
+  width: 50vw;
+  align-items: center;
+  background: linear-gradient(#ffffff00, #f9ba807a) fixed;
+  border-radius: 10%;
+}
+
+.create-events-form h2{
+  font-size: 2em;
+  font-weight: 200;
+  margin-bottom: 0%;
+}
+
+.create-event{
+  display: flex;
+  flex-direction: column;
+  height: 30vw;
+  justify-content: space-around;
+  align-items: flex-end;
+
+}
+
+.create-event label{
+  letter-spacing: 1.10px;
+}
+
+input[class='create-input'], 
+.create-input {
+  width: 15vw;
+  text-align: center;
+  border: none;
+  color: black;
+  border-bottom: 1px solid white;
+  background-color: rgba(255, 255, 255, 0.479);
+  font-size: 18px;
+  height: 1.5vw;
+  margin-left: .2vw;
+}
+
+.create-event-btn {
+  all: unset;
+  align-self: center;
+  all: unset;
+  padding: .1vw;
+  text-decoration: none;
+  font-size: 1.2em;
+  font-weight: 500;
+  color: #12232E;
+  letter-spacing: 1px;
+  border: 1px solid #fff;
+  width: fit-content;
+  align-self: center;
+
+}
+
+.create-event-btn:hover{
+  color: #fff;
+  background-color: #12232e4b;
+  border-color: #12232E;
+  transition: all .5s ease-in-out;
+  cursor: pointer;
 }
