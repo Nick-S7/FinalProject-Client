@@ -102,14 +102,15 @@ export default class CreateEvent extends React.Component {
       creator,
     } = this.state;
     return (
-      <div className="signup-page">
-        <div className="signup-form">
+      <div className="create-events-page">
+        <div className="create-events-form">
           <h2> Create new Event </h2>
 
-          <form onSubmit={(event) => this.handleFormSubmission(event)}>
+          <form className="create-event" onSubmit={(event) => this.handleFormSubmission(event)}>
             <label>
-              Event Name
+              Event Name:
               <input
+              className="create-input"
                 name="name"
                 type="text"
                 placeholder="Coachella 2021"
@@ -119,8 +120,9 @@ export default class CreateEvent extends React.Component {
             </label>
 
             <label>
-              Location
+              Location:
               <input
+              className="create-input"
                 name="location"
                 type="text"
                 placeholder="Empire Polo Club"
@@ -130,8 +132,9 @@ export default class CreateEvent extends React.Component {
             </label>
 
             <label>
-              Price
+              Price:
               <input
+              className="create-input"
                 name="price"
                 type="number"
                 placeholder="429"
@@ -140,8 +143,9 @@ export default class CreateEvent extends React.Component {
               />
             </label>
             <label>
-              date
+              Date:
               <input
+              className="create-input"
                 name="date"
                 type="date"
                 placeholder="04/13/2020"
@@ -152,6 +156,7 @@ export default class CreateEvent extends React.Component {
             <label>
               Add an image:{" "}
               <input
+              className="create-input"
                 id="imageInput"
                 type="file"
                 name="image"
@@ -166,7 +171,7 @@ export default class CreateEvent extends React.Component {
     <input type="submit" value="Save" />
   </form> */}
 
-            <button> Create Event </button>
+            <button className="create-event-btn"> Create Event </button>
           </form>
 
           {/* {message && <div>{message}</div>} */}
