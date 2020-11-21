@@ -72,7 +72,7 @@ export default class CommentForm extends React.Component {
         );
         this.props.onCommentsChange(comment);
         console.log(comment);
-        this.props.history.push("/");
+        this.props.history.push(`/`);
 
         //clear the comment form
         this.setState({
@@ -120,33 +120,37 @@ export default class CommentForm extends React.Component {
 
     return (
       <div className="center-add-com">
+        <section className="add-comment-bkg">
+          <h2 className="comment-head"> Add a Comment </h2>
 
-      <section className="add-comment-bkg">
-        <h2 className="comment-head"> Add a Comment </h2>
+          <form className="add-comment" onSubmit={this.handleFormSubmission}>
+            <label>
+              <input
+                className="comment-input"
+                name="content"
+                type="text"
+                rows="5"
+                placeholder="Begin typing your comment here..."
+                value={content}
+                onChange={this.handleInputChange}
+              />
+            </label>
 
-        <form className="add-comment" onSubmit={this.handleFormSubmission}>
-          <label>
-            <input
-            className="comment-input"
-              name="content"
-              type="text"
-              rows="5"
-              placeholder="Begin typing your comment here..."
-              value={content}
-              onChange={this.handleInputChange}
-            />
-          </label>
+            {this.renderError()}
 
-          {this.renderError()}
+            <button
+              className="submit-comment-btn"
+              onClick={() => window.location.reload()}
+            >
+              {" "}
+              Submit Comment{" "}
+            </button>
+            {/* <button disabled={this.state.loading}> Submit Comment </button> */}
+          </form>
 
-          <button className="submit-comment-btn" onClick={() => window.location.reload()}> Submit Comment </button>
-          {/* <button disabled={this.state.loading}> Submit Comment </button> */}
-        </form>
-
-        {/* {message && <div>{message}</div>} */}
-      </section>
+          {/* {message && <div>{message}</div>} */}
+        </section>
       </div>
     );
-
   }
 }

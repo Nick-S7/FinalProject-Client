@@ -6,6 +6,9 @@ export default class EditProfile extends Component {
     super(props);
 
     this.state = {
+      // _id: "",
+      // username: "",
+      // email: "",
       _id: props.currentUser._id,
       username: props.currentUser.username,
       email: props.currentUser.email,
@@ -23,18 +26,20 @@ export default class EditProfile extends Component {
     const { _id, username, email } = this.state;
     console.log("state after submitting changes: ", this.state);
 
-    AUTH_SERVICE.updateProfile(_id, { username, email })
+    AUTH_SERVICE.updateProfile({ username, email })
       .then((responseFromServer) => {
+        console.log("response from server: ", responseFromServer);
         const { user } = responseFromServer.data;
-        console.log(user);
-        this.props.history.push("/api/profile");
+        // console.log(user);
+        this.props.handleChangeUser({ username, email });
+        this.props.history.push("/profile");
       })
       .catch((err) => console.log("error updating user profile: ", err));
   };
 
   render() {
     const { username, email } = this.state;
-    console.log(this.props.currentUser);
+    console.log(this.state);
 
     return (
       <div className="edit-profile-page">

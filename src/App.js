@@ -80,6 +80,11 @@ export default class App extends React.Component {
     console.log(event, "=====", this.state.selectedEvent);
   };
 
+  handleChangeUser = ({ email, username }) => {
+    this.setState({
+      currentUser: { ...this.state.user, email, username },
+    });
+  };
   render() {
     // const loadingSpin = this.state.loading ? "App-logo-spin" : "App-logo";
     return (
@@ -126,7 +131,11 @@ export default class App extends React.Component {
               authorized={this.state.currentUser}
               redirect={"/login-page"}
               render={(props) => (
-                <EditProfile {...props} currentUser={this.state.currentUser} />
+                <EditProfile
+                  {...props}
+                  currentUser={this.state.currentUser}
+                  handleChangeUser={this.handleChangeUser}
+                />
               )}
             />
 

@@ -147,7 +147,11 @@ export default class EventDetails extends Component {
               <>
                 <Link
                   to={{
+<<<<<<< HEAD
+                    pathname: `/api/events/${event?._id}/update`,
+=======
                     pathname: `/api/events/${event?.id}/update`,
+>>>>>>> bb3495c37e3751b92fe6e0b54b054d5a860c51c7
                     event: this.state.event,
                   }}
                 >
@@ -171,11 +175,15 @@ export default class EventDetails extends Component {
             addComment={this.addComment}
           />
           <h2 className="comment-head">Comments</h2>
+<<<<<<< HEAD
+          <ListComments comments={this.state.comments} />
+=======
           <ListComments
             comments={this.state.comments}
             {...this.props}
             handleDeleteComment={this.handleDeleteComment}
           />
+>>>>>>> bb3495c37e3751b92fe6e0b54b054d5a860c51c7
         </div>
       </div>
     );
