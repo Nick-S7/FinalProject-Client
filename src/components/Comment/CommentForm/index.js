@@ -62,16 +62,16 @@ export default class CommentForm extends React.Component {
       .then((responseFromServer) => {
         const { comment } = this.state;
         // console.log("props: ", this.props);
-        console.log(
-          "comment: ",
-          comment,
-          "responseFromServer: ",
-          responseFromServer,
-          "state: ",
-          this.state
-        );
+        // console.log(
+        //   "comment: ",
+        //   comment,
+        //   "responseFromServer: ",
+        //   responseFromServer,
+        //   "state: ",
+        //   this.state
+        // );
         this.props.onCommentsChange(comment);
-        console.log(comment);
+        // console.log(comment);
         this.props.history.push(`/`);
 
         //clear the comment form
