@@ -59,11 +59,6 @@ export default class App extends React.Component {
     this.setState({ events: updatedEvents });
   };
 
-  updateComments = (comment) => {
-    const updatedComments = [...this.state.comments, comment];
-    this.setState({ comments: updatedComments });
-  };
-
   updateEventsAfterDelete = (id) => {
     const updatedEvents = [...this.state.events];
 
@@ -163,7 +158,7 @@ export default class App extends React.Component {
               )}
             />
 
-            <ProtectedRoute
+            {/* <ProtectedRoute
               path="/api/events/:eventId/comment"
               authorized={this.state.currentUser}
               redirect={"/login-page"}
@@ -172,10 +167,10 @@ export default class App extends React.Component {
                   {...props}
                   events={this.state.events}
                   currentUser={this.state.currentUser}
-                  onCommentsChange={this.updateComments}
+                  // onCommentsChange={this.updateComments}
                 />
               )}
-            />
+            /> */}
             <Route
               path="/api/events/:id"
               render={(props) => (

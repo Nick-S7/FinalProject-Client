@@ -2,6 +2,7 @@ import React from "react";
 import CommentDetails from "../CommentDetails";
 
 const ListComments = (props) => {
+  console.log(props);
   return (
     <section className="comment-list">
       {props.comments?.length === 0 && !props.loading ? (

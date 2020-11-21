@@ -3,23 +3,13 @@ import COMMENT_SERVICE from "../../../services/CommentService";
 // import ListComments from "../ListComments";
 
 export default class CommentForm extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      // loading: false,
-      error: "",
-
-      comment: {
-        author: "",
-        content: "",
-      },
-    };
-
-    //bind the context to these methods
-    this.handleInputChange = this.handleInputChange.bind(this);
-    this.handleFormSubmission = this.handleFormSubmission.bind(this);
-  }
+  state = {
+    error: "",
+    comment: {
+      author: "",
+      content: "",
+    },
+  };
 
   //handle input change and update the state
   handleInputChange = (event) => {
@@ -40,62 +30,27 @@ export default class CommentForm extends React.Component {
   }
 
   //handle comment submission
-  handleFormSubmission = (event) => {
-    event.preventDefault();
-
+  handleFormSubmission = (e) => {
+    e.preventDefault();
     if (this.isFormValid()) {
       this.setState({ error: "Please enter a comment before submitting." });
       return;
     }
-
-    let { author } = this.props.currentUser.username;
-    let { content } = this.state.comment;
-
-    this.setState({
-      error: "",
-      // loading: true,
-    });
-
-    //populate comment on Db.
-
-    COMMENT_SERVICE.createComment({ author, content })
+    const { content } = this.state.comment;
+    const { event } = this.props;
+    COMMENT_SERVICE.createComment({ content, event })
       .then((responseFromServer) => {
         const { comment } = this.state;
-        // console.log("props: ", this.props);
-        // console.log(
-        //   "comment: ",
-        //   comment,
-        //   "responseFromServer: ",
-        //   responseFromServer,
-        //   "state: ",
-        //   this.state
-        // );
-        this.props.onCommentsChange(comment);
-        // console.log(comment);
-        this.props.history.push(`/`);
-
+        this.props.updateComments(comment);
+        this.props.history.push(`/api/events/${this.props.event.id}`);
         //clear the comment form
         this.setState({
-          // loading: false,
           comment: { ...comment, content: "" },
         });
       })
       .catch((err) => {
         console.log(err);
       });
-
-    // BOOK_SERVICE.createBook({ content, author })
-    //   .then((responseFromServer) => {
-    //     const { book } = responseFromServer.data;
-
-    //     this.props.onBooksChange(book);
-    //     this.props.history.push("/");
-    //   })
-    //   .catch((err) => {
-    //     if (err.response && err.response.data) {
-    //       return this.setState({ message: err.response.data.message });
-    //     }
-    //   });
   };
 
   renderError() {
@@ -138,13 +93,7 @@ export default class CommentForm extends React.Component {
 
             {this.renderError()}
 
-            <button
-              className="submit-comment-btn"
-              onClick={() => window.location.reload()}
-            >
-              {" "}
-              Submit Comment{" "}
-            </button>
+            <button className="submit-comment-btn"> Submit Comment </button>
             {/* <button disabled={this.state.loading}> Submit Comment </button> */}
           </form>
 
