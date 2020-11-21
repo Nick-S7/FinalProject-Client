@@ -101,7 +101,7 @@ export default class EventDetails extends Component {
   render() {
     // console.log(this.state.event, "1");
     const { event } = this.state;
-    console.log(this.state.comments);
+    // console.log(this.state.comments);
     // console.log("checking if state was set to event: ", event);
     // console.log("checking for nested objects in state: ", event.priceRanges);
     // console.log(`any comments? ${mappedComments?.[0]}`);
