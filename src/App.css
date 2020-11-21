@@ -325,7 +325,7 @@ input[type='text'],
 
 }
 
-input[type='text'],
+input[class='input-field'],
 .input-field{
   width: 15vw;
   text-align: center;
@@ -704,7 +704,7 @@ justify-content: space-between;
   flex-direction: column;
 }
 
-input[type='text'], .comment-input{
+input[class='comment-input'], .comment-input{
   width: 45vw;
   height: 5vw;
 }
@@ -847,6 +847,95 @@ input[class='create-input'],
 .create-event-btn:hover{
   color: #fff;
   background-color: #12232e4b;
+  border-color: #12232E;
+  transition: all .5s ease-in-out;
+  cursor: pointer;
+}
+
+.edit-profile-page{
+  display: flex;
+  justify-content: center;
+  height: 40vw;
+  align-items: center;
+  font-family: cFont;
+  color: #fff;
+
+}
+
+.edit-profile-form{
+  display: flex;
+  flex-direction: column;
+  width: 50vw;
+  align-items: center;
+  background: linear-gradient(#ffffff00, #f9ba807a) fixed;
+  border-radius: 10%;
+  height: 15vw;
+}
+
+.edit-profile-form form{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  height: 10vw;
+  justify-content: space-around;
+
+}
+
+.edit-profile-btn{
+  all: unset;
+  align-self: center;
+  all: unset;
+  padding: .1vw;
+  text-decoration: none;
+  font-size: 1.2em;
+  font-weight: 500;
+  color: #12232E;
+  letter-spacing: 1px;
+  border: 1px solid #fff;
+  width: fit-content;
+  align-self: center;
+}
+
+.edit-profile-btn:hover {
+  color: #fff;
+  background-color: #12232e4b;
+  border-color: #12232E;
+  transition: all .5s ease-in-out;
+  cursor: pointer;
+}
+
+input[class='input-field'],
+.input-field{
+  width: 15vw;
+  text-align: center;
+  border: none;
+  color: black;
+  border-bottom: 1px solid white;
+  background-color: rgba(255, 255, 255, 0.479);
+  font-size: 18px;
+  height: 1.5vw;
+  margin-left: .2vw;
+}
+
+.comment-container button{
+  all: unset;
+  align-self: center;
+  all: unset;
+  padding: .1vw;
+  text-decoration: none;
+  font-size: 1.2em;
+  font-weight: 500;
+  color: #fff;
+  letter-spacing: 1px;
+  border: 1px solid #fff;
+  width: fit-content;
+  margin-left: .3vw;
+  margin-bottom: .3vw;
+}
+
+.comment-container button:hover {
+  color: #12232E;
+  background-color: #fff;
   border-color: #12232E;
   transition: all .5s ease-in-out;
   cursor: pointer;

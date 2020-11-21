@@ -42,12 +42,14 @@ export default class EditProfile extends Component {
     console.log(this.state);
 
     return (
-      <section>
+      <div className="edit-profile-page">
+      <div className="edit-profile-form">
         <h2>Edit Profile</h2>
         <form onSubmit={this.handleFormSubmission}>
           <label>
             Username:
             <input
+            className="input-field"
               name="username"
               type="text"
               value={username}
@@ -57,15 +59,17 @@ export default class EditProfile extends Component {
           <label>
             Email:
             <input
+            className="input-field"
               name="email"
               type="text"
               value={email}
               onChange={this.handleInputChange}
             />
           </label>
-          <button>Save Changes</button>
+          <button className="edit-profile-btn">Save Changes</button>
         </form>
-      </section>
+        </div>
+      </div>
     );
   }
 }

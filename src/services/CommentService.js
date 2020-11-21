@@ -14,6 +14,9 @@ const COMMENT_SERVICE = {
   getComments() {
     return service.get("/api/events/:eventId/comments");
   },
+  deleteComment(eventId, commentId) {
+    return service.post(`/api/events/${eventId}/comments/${commentId}/delete`);
+  },
   // deleteBook(id) {
   //   return service.post(`/api/books/${id}/delete`, {});
   // },

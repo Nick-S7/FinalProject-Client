@@ -23,10 +23,20 @@ export default class EventDetails extends Component {
     });
   }
 
+  handleDeleteComment = (commentId) => {
+    COMMENT_SERVICE.deleteComment(this.state.event._id, commentId).then(() => {
+      // const comments = this.state.event.comments.filter((c) => c !== commentId);
+      // const event = { ...this.state.event, comments };
+      this.setState({
+        // event,
+        comments: this.state.comments.filter((c) => c._id !== commentId),
+      });
+    });
+  };
+
   loadEventDetails = () => {
     const eventId = this.props.match.params.id;
     const baseUrl = `https://app.ticketmaster.com/discovery/v2/events/`;
-    console.log(eventId);
 
     //check the id length of the event which will determine whether event should be loaded via API or DB
     if (eventId.length < 20) {
@@ -34,7 +44,6 @@ export default class EventDetails extends Component {
       axios
         .get(`${baseUrl}/${eventId}?apikey=CRaZgOHhS0iRjYSFURNt0YrDZs6z0nVR`)
         .then((responseFromApi) => {
-          console.log("response from axios:", responseFromApi.data);
           // console.log(this.props);
           //set the state to the responseFromApi
           this.setState({ event: responseFromApi.data });
@@ -58,9 +67,7 @@ export default class EventDetails extends Component {
     const eId = this.props.match.params.id;
     COMMENT_SERVICE.getComments(eId)
       .then((responseFromServer) => {
-        console.log(eId);
         const { comments } = responseFromServer.data;
-        console.log(responseFromServer.data);
         this.setState({ comments });
       })
       .catch((err) =>
@@ -140,7 +147,11 @@ export default class EventDetails extends Component {
               <>
                 <Link
                   to={{
+<<<<<<< HEAD
                     pathname: `/api/events/${event?._id}/update`,
+=======
+                    pathname: `/api/events/${event?.id}/update`,
+>>>>>>> bb3495c37e3751b92fe6e0b54b054d5a860c51c7
                     event: this.state.event,
                   }}
                 >
@@ -164,7 +175,15 @@ export default class EventDetails extends Component {
             addComment={this.addComment}
           />
           <h2 className="comment-head">Comments</h2>
+<<<<<<< HEAD
           <ListComments comments={this.state.comments} />
+=======
+          <ListComments
+            comments={this.state.comments}
+            {...this.props}
+            handleDeleteComment={this.handleDeleteComment}
+          />
+>>>>>>> bb3495c37e3751b92fe6e0b54b054d5a860c51c7
         </div>
       </div>
     );

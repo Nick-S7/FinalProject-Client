@@ -138,7 +138,13 @@ export default class CommentForm extends React.Component {
 
             {this.renderError()}
 
-            <button className="submit-comment-btn"> Submit Comment </button>
+            <button
+              className="submit-comment-btn"
+              onClick={() => window.location.reload()}
+            >
+              {" "}
+              Submit Comment{" "}
+            </button>
             {/* <button disabled={this.state.loading}> Submit Comment </button> */}
           </form>
 
