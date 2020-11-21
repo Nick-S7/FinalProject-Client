@@ -102,69 +102,69 @@ export default class EventDetails extends Component {
     return (
       //need to debug why comments are not rendered even though the state does display the comments.
       <div className="details-page">
-      <div className="details-container">
-      <div className="top-half-details">
+        <div className="details-container">
+          <div className="top-half-details">
+            <div className="details-head">
+              <img
+                className="details-img"
+                src={
+                  event?.image ||
+                  event?._embedded?.attractions?.[0]?.images?.[1]?.url
+                }
+                alt="venue"
+              />
 
-      
-      <div className="details-head">
+              <h3>{event?.name}</h3>
+            </div>
 
-        <img className="details-img"
-          src={
-            event?.image || event?._embedded?.attractions?.[0]?.images?.[1]?.url
-          }
-          alt="venue"
-        />
+            <div className="details-details">
+              <p>When: {event?.date || event.dates?.start?.localDate}</p>
+              <p>
+                Where: {event?.location || event?._embedded?.venues?.[0]?.name}
+              </p>
 
-         <h3>{event?.name}</h3>
-        </div>
+              <p>Price: ${event?.price || event?.priceRanges?.[0]?.min}</p>
 
-          <div className="details-details">
-            <p>
-              When: {event?.date || event.dates?.start?.localDate} 
-            </p>
-            <p>
-              Where:{" "}
-              {event?.location || event?._embedded?.venues?.[0]?.name}
-            </p>
+              <a href={event?.url}>Purchase Tickets</a>
 
-            <p>Price: ${event?.price || event?.priceRanges?.[0]?.min}</p>
+              <h3>Information about this event: </h3>
+              <p>
+                {event?.info ||
+                  event?.pleaseNote ||
+                  "This is a custom event created by the community!"}
+              </p>
 
-            <a href={event?.url}>Purchase Tickets</a>
+              <h4>Event created by {event?.creator || "Ticketmaster"}</h4>
 
-            <h3>Information about this event: </h3>
-        <p>
-          {event?.info || event?.pleaseNote || "This is a custom event created by the community!"}
-        </p>
-
-            <h4>Event created by {event?.creator || "Ticketmaster"}</h4>
-
-            <br />
-            <>
-              <Link
-                to={{
-                  pathname: `/api/events/${event?.id}/update`,
-                  event: this.state.event,
-                }}
-              >
-                Edit
-              </Link>
               <br />
+              <>
+                <Link
+                  to={{
+                    pathname: `/api/events/${event?._id}/update`,
+                    event: this.state.event,
+                  }}
+                >
+                  Edit
+                </Link>
+                <br />
 
-              <button className="delete-event-btn" onClick={() => this.deleteUserEvent(event.id)}>
-                Delete Event
-              </button>
-            </>
+                <button
+                  className="delete-event-btn"
+                  onClick={() => this.deleteUserEvent(event.id)}
+                >
+                  Delete Event
+                </button>
+              </>
+            </div>
           </div>
-
-        </div>
-        <br />
-        <CommentForm
-          {...this.props}
-          onCommentsChange={this.props.onCommentsChange}
-          addComment={this.addComment}
-        />
-        <h2 className="comment-head">Comments</h2>
-        <ListComments comments={this.state.comments} />
+          <br />
+          <CommentForm
+            {...this.props}
+            onCommentsChange={this.props.onCommentsChange}
+            addComment={this.addComment}
+          />
+          <h2 className="comment-head">Comments</h2>
+          <ListComments comments={this.state.comments} />
         </div>
       </div>
     );
