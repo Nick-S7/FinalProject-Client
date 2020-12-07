@@ -359,12 +359,13 @@ input[class='input-field'],
 }
 
 .login-form button{
-  padding: .1vw;
   all: unset;
+  padding: .1vw;
+  background-color: rgba(255, 255, 255, 0.295);
   text-decoration: none;
   font-size: 1.2em;
   font-weight: 500;
-  color: #fff;
+  color: #12232E;
   letter-spacing: 1px;
   border: 1px solid #12232E;
   margin-top: 1vw;
@@ -372,7 +373,8 @@ input[class='input-field'],
 
 .login-form button:hover{
   padding: .2vw;
-  color: #12232E;
+  color: #fff;
+  background-color: #12232E;
   border-color: #fff;
   transition: all 1s ease-in-out;
   cursor: pointer;
@@ -415,12 +417,13 @@ input[class='input-field'],
 
 .signup-form button{
   all:unset;
+  background-color: rgba(255, 255, 255, 0.295);
   align-self: center;
   padding: .1vw;
   text-decoration: none;
   font-size: 1.2em;
   font-weight: 500;
-  color: #fff;
+  color: #12232E;
   letter-spacing: 1px;
   border: 1px solid #12232E;
   margin-top: 1vw;
@@ -428,9 +431,10 @@ input[class='input-field'],
 
 .signup-form button:hover{
   padding: .2vw;
-  color: #12232E;
+  color: #fff;
+  background-color: #12232E;
   border-color: #fff;
-  transition: all 1s ease-in-out;
+  transition: all .5s ease-in-out;
   cursor: pointer;
 }
 
@@ -586,9 +590,8 @@ justify-content: space-between;
 
 .profile-links a{
   all: unset;
-  align-self: center;
-  all: unset;
   padding: .1vw;
+  background-color: rgba(255, 255, 255, 0.295);
   margin-top: 1vw;
   text-decoration: none;
   font-size: 1.2em;
@@ -658,6 +661,7 @@ justify-content: space-between;
 
 .details-details a{
   all: unset;
+  background-color: rgba(255, 255, 255, 0.295);
   padding: .1vw;
   text-decoration: none;
   font-size: 1.2em;
@@ -679,6 +683,7 @@ justify-content: space-between;
 
 .delete-event-btn{
   all: unset;
+  background-color: rgba(255, 255, 255, 0.295);
   padding: .1vw;
   text-decoration: none;
   font-size: 1.2em;
@@ -711,6 +716,7 @@ input[class='comment-input'], .comment-input{
 
 .submit-comment-btn {
   all: unset;
+  background-color: rgba(255, 255, 255, 0.295);
   padding: .1vw;
   margin-top: 1vw;
   text-decoration: none;
