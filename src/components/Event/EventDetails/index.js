@@ -159,10 +159,9 @@ export default class EventDetails extends Component {
                   Edit
                 </Link>
                 <br />
-
                 <button
                   className="delete-event-btn"
-                  onClick={() => this.deleteUserEvent(event.id)}
+                  onClick={() => this.deleteUserEvent(event._id)}
                 >
                   Delete Event
                 </button>
